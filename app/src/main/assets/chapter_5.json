@@ -1,0 +1,2684 @@
+{
+  "chapterId": 5,
+  "chapterTitle": "Life Processes",
+  "topics": [
+    {
+      "topicId": "1",
+      "topicTitle": "Visible Movements",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "\uD83D\uDC40 Visible Movements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let's explore the signs we use to decide if something is living."
+        },
+        {
+          "type": "heading",
+          "text": "👀 Visible Movements as Evidence for Being Alive"
+        },
+        {
+          "type": "paragraph",
+          "text": "Often, we think of some sort of movement as common evidence for being alive."
+        },
+        {
+          "type": "heading",
+          "text": "🏃‍♂️ In Animals & People:"
+        },
+        {
+          "type": "bullet",
+          "text": "A dog running"
+        },
+        {
+          "type": "bullet",
+          "text": "A cow chewing its cud"
+        },
+        {
+          "type": "bullet",
+          "text": "A person shouting"
+        },
+        {
+          "type": "bullet",
+          "text": "Even when asleep, we see them breathing, which is a type of movement"
+        },
+        {
+          "type": "heading",
+          "text": "🌱 In Plants:"
+        },
+        {
+          "type": "bullet",
+          "text": "They grow over time, which is a growth-related movement"
+        },
+        {
+          "type": "bullet",
+          "text": "They are often green"
+        },
+        {
+          "type": "heading",
+          "text": "⚠️ Limitation:"
+        },
+        {
+          "type": "bullet",
+          "text": "A plant can be alive without visibly growing"
+        },
+        {
+          "type": "bullet",
+          "text": "Some animals breathe with very little motion"
+        },
+        {
+          "type": "heading",
+          "text": "🔬 The Invisible Movement Necessary for Life"
+        },
+        {
+          "type": "paragraph",
+          "text": "The true sign of life is movement on a very small scale, one that is invisible to the naked eye."
+        },
+        {
+          "type": "bullet",
+          "text": "This is the constant movement of molecules"
+        },
+        {
+          "type": "bullet",
+          "text": "Professional biologists agree that this invisible molecular movement is necessary for life"
+        },
+        {
+          "type": "heading",
+          "text": "🦠 The Curious Case of the Virus"
+        },
+        {
+          "type": "bullet",
+          "text": "Viruses are a puzzle"
+        },
+        {
+          "type": "bullet",
+          "text": "They do not show any molecular movement on their own"
+        },
+        {
+          "type": "bullet",
+          "text": "They only become active when they infect some cell"
+        },
+        {
+          "type": "bullet",
+          "text": "This is why there is a controversy (a scientific debate) about whether they are truly alive or not"
+        },
+        {
+          "type": "heading",
+          "text": "🔧 Why Are Molecular Movements Needed for Life?"
+        },
+        {
+          "type": "paragraph",
+          "text": "This constant movement is all about keeping the organism's structure from breaking down."
+        },
+        {
+          "type": "heading",
+          "text": "🧬 Well-Organised Structures:"
+        },
+        {
+          "type": "bullet",
+          "text": "Living organisms have highly organised structures:",
+          "subBullets": [
+            "Tissues",
+            "Tissues are made of cells",
+            "Cells have smaller components, all made of molecules"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "⚠️ The Threat of Breaking Down:"
+        },
+        {
+          "type": "bullet",
+          "text": "Because of the effects of the environment, this organised, ordered nature of living structures is very likely to keep breaking down over time"
+        },
+        {
+          "type": "heading",
+          "text": "🛠️ The Need for Maintenance:"
+        },
+        {
+          "type": "bullet",
+          "text": "If this order breaks down, the organism will no longer be alive"
+        },
+        {
+          "type": "bullet",
+          "text": "Therefore, living creatures must keep repairing and maintaining their structures"
+        },
+        {
+          "type": "bullet",
+          "text": "Since these structures are made of molecules, they must move molecules around all the time"
+        }
+      ]
+    }
+  ,
+    {
+      "topicId": "2",
+      "topicTitle": "Life Processes?",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "⚡ 5.1 What are Life Processes?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The \"maintenance job\" of repairing and protecting the body must go on all the time, even when we are sleeping or just sitting."
+        },
+        {
+          "type": "paragraph",
+          "text": "The processes which together perform this maintenance job are life processes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Let's look at the main life processes that are essential for any living organism."
+        },
+        {
+          "type": "heading",
+          "text": "🧫 Single-celled vs. Multi-cellular Organisms"
+        },
+        {
+          "type": "paragraph",
+          "text": "Before we look at the life processes, it's important to understand a key difference between simple and complex organisms."
+        },
+        {
+          "type": "heading",
+          "text": "🦠 Single-Celled Organisms:"
+        },
+        {
+          "type": "bullet",
+          "text": "No special organs are needed for:",
+          "subBullets": [
+            "Taking in food",
+            "Exchange of gases",
+            "Removing waste"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "The entire surface of the organism is in direct contact with the environment. Hence Diffusion is enough for all life processes"
+        },
+        {
+          "type": "bullet",
+          "text": "Diffusion means the movement of substances (like oxygen or food) from an area of high concentration to an area of low concentration, without using energy"
+        },
+        {
+          "type": "heading",
+          "text": "🧍‍♂️ Multi-Cellular Organisms:"
+        },
+        {
+          "type": "bullet",
+          "text": "Have a larger and more complex body."
+        },
+        {
+          "type": "bullet",
+          "text": "Most cells are deep inside the body and not in direct contact with the environment."
+        },
+        {
+          "type": "bullet",
+          "text": "So, simple diffusion is too slow and not enough to reach all cells."
+        },
+        {
+          "type": "bullet",
+          "text": "They have specialized tissues or organs to perform different life functions (like lungs for breathing, stomach for digestion, etc.)."
+        },
+        {
+          "type": "heading",
+          "text": "⚡ 1. Getting Energy (Nutrition)"
+        },
+        {
+          "type": "bullet",
+          "text": "All maintenance processes need energy ➡️ comes from food"
+        },
+        {
+          "type": "bullet",
+          "text": "Process of taking food into the body: Nutrition"
+        },
+        {
+          "type": "bullet",
+          "text": "Handled by specialised tissues in multi-cellular organisms"
+        },
+        {
+          "type": "heading",
+          "text": "💨 2. Breaking Down Food for Energy (Respiration)"
+        },
+        {
+          "type": "bullet",
+          "text": "Food is broken down inside the body for energy"
+        },
+        {
+          "type": "bullet",
+          "text": "Often involves oxygen"
+        },
+        {
+          "type": "bullet",
+          "text": "Using oxygen to break down food: Respiration"
+        },
+        {
+          "type": "bullet",
+          "text": "Also handled by specialised tissues in complex organisms"
+        },
+        {
+          "type": "heading",
+          "text": "🚚 3. Moving Materials Around (Transportation)"
+        },
+        {
+          "type": "bullet",
+          "text": "Food and oxygen are taken up in one place, but needed everywhere"
+        },
+        {
+          "type": "bullet",
+          "text": "Need a transportation system to move them around"
+        },
+        {
+          "type": "bullet",
+          "text": "Ensures delivery of nutrients and oxygen to all body parts"
+        },
+        {
+          "type": "heading",
+          "text": "🗑️ 4. Removing Waste (Excretion)"
+        },
+        {
+          "type": "bullet",
+          "text": "Energy production creates waste by-products"
+        },
+        {
+          "type": "bullet",
+          "text": "Some wastes can be harmful if not removed"
+        },
+        {
+          "type": "bullet",
+          "text": "Removal process: Excretion"
+        },
+        {
+          "type": "bullet",
+          "text": "Specialised excretory tissue removes waste"
+        },
+        {
+          "type": "bullet",
+          "text": "Transportation system also helps carry waste to this tissue"
+        }
+      ]
+    },
+    {
+      "topicId": "3",
+      "topicTitle": "Nutrition",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "🍽️ 5.2 NUTRITION"
+        },
+        {
+          "type": "heading",
+          "text": "❓ Why Do We Need Food? 🚴‍♂️"
+        },
+        {
+          "type": "bullet",
+          "text": "Any activity (like walking or riding a bicycle) uses up energy"
+        },
+        {
+          "type": "bullet",
+          "text": "Even when inactive, energy is needed to maintain order in the body"
+        },
+        {
+          "type": "bullet",
+          "text": "We also need minerals for:",
+          "subBullets": [
+            "Growth",
+            "Development",
+            "Synthesising proteins & other substances"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "➡️ The source of energy and materials is the food we eat"
+        },
+        {
+          "type": "heading",
+          "text": "🍲 How Do Living Things Get Their Food? 🤔"
+        },
+        {
+          "type": "paragraph",
+          "text": "All organisms need energy and materials, but they obtain them in different ways. These methods divide them into two main groups:"
+        },
+        {
+          "type": "heading",
+          "text": "🌿 Autotrophs (Self-Feeders)"
+        },
+        {
+          "type": "bullet",
+          "text": "Use simple food materials from inorganic sources like:",
+          "subBullets": [
+            "Carbon dioxide",
+            "Water"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "They make their own food via processes like photosynthesis"
+        },
+        {
+          "type": "bullet",
+          "text": "✅ Examples: Green plants, some bacteria"
+        },
+        {
+          "type": "heading",
+          "text": "🦁 Heterotrophs (Other-Feeders)"
+        },
+        {
+          "type": "bullet",
+          "text": "Use complex substances as food"
+        },
+        {
+          "type": "bullet",
+          "text": "These need to be broken down into simpler substances"
+        },
+        {
+          "type": "heading",
+          "text": "🧪 How is this done?"
+        },
+        {
+          "type": "bullet",
+          "text": "Special molecules called bio-catalysts or enzymes help in breaking down food"
+        },
+        {
+          "type": "bullet",
+          "text": "🧤 Think of them(bio-catalysts) as tiny helpers or special scissors ✂️ that:",
+          "subBullets": [
+            "Speed up reactions",
+            "Break down large food particles",
+            "Do not get used up in the process"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🧬 Key Fact:"
+        },
+        {
+          "type": "bullet",
+          "text": "Heterotrophs depend directly or indirectly on autotrophs for food"
+        },
+        {
+          "type": "bullet",
+          "text": "✅ Examples: Animals, fungi"
+        }
+      ]
+    },
+    {
+      "topicId": "4",
+      "topicTitle": "Autotroph",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "\uD83C\uDF1E Autotrophic Nutrition"
+        },
+        {
+          "type": "heading",
+          "text": "🌞 What is Photosynthesis?"
+        },
+        {
+          "type": "bullet",
+          "text": "Photosynthesis is the process where autotrophs take simple things from the outside world and turn them into stored energy (food!)."
+        },
+        {
+          "type": "heading",
+          "text": "🧪 The Ingredients for Photosynthesis"
+        },
+        {
+          "type": "paragraph",
+          "text": "Plants take in two main things from the environment:"
+        },
+        {
+          "type": "bullet",
+          "text": "Carbon Dioxide (CO₂) – from the air we breathe out"
+        },
+        {
+          "type": "bullet",
+          "text": "Water (H₂O) – from the soil"
+        },
+        {
+          "type": "paragraph",
+          "text": "In the presence of Sunlight ☀️ and Chlorophyll (the green stuff in leaves), these ingredients are converted into carbohydrates."
+        },
+        {
+          "type": "bullet",
+          "text": "🍞 Carbohydrates: This is the plant’s food! Like roti or rice for the plant."
+        },
+        {
+          "type": "heading",
+          "text": "🍱 What Happens to the Food (Carbohydrates)?"
+        },
+        {
+          "type": "bullet",
+          "text": "Used by the plant for energy"
+        },
+        {
+          "type": "bullet",
+          "text": "Extra food is stored as starch"
+        },
+        {
+          "type": "bullet",
+          "text": "🌟 Starch: Backup food supply; internal energy reserve"
+        },
+        {
+          "type": "heading",
+          "text": "💡 Did you know?"
+        },
+        {
+          "type": "bullet",
+          "text": "Humans also store energy as glycogen"
+        },
+        {
+          "type": "bullet",
+          "text": "Plant’s stored food = Starch"
+        },
+        {
+          "type": "bullet",
+          "text": "Human’s stored food = Glycogen"
+        },
+        {
+          "type": "heading",
+          "text": "🧬 The Photosynthesis Chemical Equation"
+        },
+        {
+          "type": "paragraph",
+          "text": "6CO₂ + 12H₂O → C₆H₁₂O₆ + 6O₂ + 6H₂O\n(In presence of Chlorophyll and Sunlight)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let’s break this down:"
+        },
+        {
+          "type": "bullet",
+          "text": "6CO₂: Six Carbon Dioxide molecules"
+        },
+        {
+          "type": "bullet",
+          "text": "12H₂O: Twelve Water molecules"
+        },
+        {
+          "type": "bullet",
+          "text": "C₆H₁₂O₆: Glucose (plant’s food!) 🍽️"
+        },
+        {
+          "type": "bullet",
+          "text": "6O₂: Oxygen released as a by-product 🌬️"
+        },
+        {
+          "type": "bullet",
+          "text": "6H₂O: Additional Water formed"
+        },
+        {
+          "type": "heading",
+          "text": "🔁 The 3 Main Events of Photosynthesis"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Absorption of Light Energy by Chlorophyll",
+          "subBullets": [
+            "Chlorophyll absorbs sunlight 🌞 like a tiny solar panel 🔋"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "2. Conversion of Light Energy to Chemical Energy & Splitting of Water",
+          "subBullets": [
+            "Light energy turns into chemical energy",
+            "Water (H₂O) is split into Hydrogen (H) and Oxygen (O) 💧 ➡️ H + O"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "3. Reduction of Carbon Dioxide to Carbohydrates",
+          "subBullets": [
+            "CO₂ combines with Hydrogen to form glucose (a carbohydrate)"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🌵 Do These Steps Always Happen One After Another?"
+        },
+        {
+          "type": "bullet",
+          "text": "Not always!"
+        },
+        {
+          "type": "bullet",
+          "text": "Desert plants are smart:",
+          "subBullets": [
+            "Take in CO₂ at night to save water 🌙",
+            "Make an intermediate compound",
+            "Use sunlight during the day to make food ☀️"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🔬 Where Does Photosynthesis Happen?"
+        },
+        {
+          "type": "bullet",
+          "text": "Look at a leaf cross-section under a microscope 🔍"
+        },
+        {
+          "type": "bullet",
+          "text": "You’ll see green dots = chloroplasts"
+        },
+        {
+          "type": "bullet",
+          "text": "Chloroplasts contain chlorophyll"
+        },
+        {
+          "type": "bullet",
+          "text": "• • So, chloroplast = kitchen of the cell 👩‍🍳"
+        },
+        {
+          "type": "heading",
+          "text": "🔬 Cross section of a leaf"
+        },
+        {
+          "type": "image",
+          "resName": "cross_section_of_a_leaf",
+          "height": 290
+        }
+      ]
+    },
+    {
+      "topicId": "5",
+      "topicTitle": "Raw Materials",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "\uD83D\uDCA7 How Plants Get Their Raw Materials?"
+        },
+        {
+          "type": "image",
+          "resName": "photosynthesis_diagram",
+          "height": 210
+        },
+        {
+          "type": "heading",
+          "text": "💨 Getting Carbon Dioxide (CO₂)"
+        },
+        {
+          "type": "bullet",
+          "text": "Plants get carbon dioxide from the air through tiny pores on the surface of leaves called stomata."
+        },
+        {
+          "type": "bullet",
+          "text": "🕳️ Stomata (singular: stoma): Like tiny \"mouths\" on the leaf for gas exchange."
+        },
+        {
+          "type": "bullet",
+          "text": "🌬️ A massive amount of gas exchange takes place through these stomata during photosynthesis."
+        },
+        {
+          "type": "heading",
+          "text": "🔍 Note:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Gas exchange also happens across the surface of stems and roots."
+        },
+        {
+          "type": "heading",
+          "text": "💧 The Problem of Water Loss"
+        },
+        {
+          "type": "bullet",
+          "text": "While stomata allow CO₂ in, they can also cause water loss."
+        },
+        {
+          "type": "bullet",
+          "text": "🌵 To avoid losing too much water, the plant closes the stomata when CO₂ isn't needed."
+        },
+        {
+          "type": "heading",
+          "text": "💂 The Gatekeepers: Guard Cells"
+        },
+        {
+          "type": "bullet",
+          "text": "Opening and closing of stomata is regulated by guard cells."
+        },
+        {
+          "type": "bullet",
+          "text": "🫘 Guard Cells: Two bean-shaped cells around each stoma that act like gatekeepers."
+        },
+        {
+          "type": "heading",
+          "text": "🔄 How It Works:"
+        },
+        {
+          "type": "bullet",
+          "text": "When water enters the guard cells:",
+          "subBullets": [
+            "They swell and curve outward ➡️ Stomata opens"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "When water is lost from the guard cells:",
+          "subBullets": [
+            "They shrink and straighten ➡️ Stomata closes"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🌱 Getting Water and Other Raw Materials from the Soil"
+        },
+        {
+          "type": "paragraph",
+          "text": "Plants need more than just CO₂—they also need water and minerals."
+        },
+        {
+          "type": "heading",
+          "text": "🚿 Water (H₂O):"
+        },
+        {
+          "type": "bullet",
+          "text": "Terrestrial plants absorb water from the soil through their roots"
+        },
+        {
+          "type": "heading",
+          "text": "🧪 Other Essential Minerals:"
+        },
+        {
+          "type": "bullet",
+          "text": "📌 Nitrogen"
+        },
+        {
+          "type": "bullet",
+          "text": "📌 Phosphorus"
+        },
+        {
+          "type": "bullet",
+          "text": "📌 Iron"
+        },
+        {
+          "type": "bullet",
+          "text": "📌 Magnesium"
+        },
+        {
+          "type": "paragraph",
+          "text": "These are also taken up through the roots."
+        },
+        {
+          "type": "heading",
+          "text": "⭐ The Importance of Nitrogen"
+        },
+        {
+          "type": "bullet",
+          "text": "Nitrogen is an essential nutrient used to build proteins and important plant compounds."
+        },
+        {
+          "type": "heading",
+          "text": "🧬 How Plants Get Nitrogen:"
+        },
+        {
+          "type": "bullet",
+          "text": "1. From inorganic forms in soil (like nitrates or nitrites)"
+        },
+        {
+          "type": "bullet",
+          "text": "2. From organic compounds made by special bacteria 🦠",
+          "subBullets": [
+            "These bacteria fix nitrogen from the atmosphere into a usable form for plants"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "6",
+      "topicTitle": "Heterotrophic Nutrition",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "\uD83C\uDF7D\uFE0F Hetrotrophic Nutrition \uD83E\uDD81"
+        },
+        {
+          "type": "paragraph",
+          "text": "While plants make their own food, other organisms can't. They depend on others for food. This is called Heterotrophic Nutrition."
+        },
+        {
+          "type": "bullet",
+          "text": "Heterotrophic (Hetero = other, Troph = nutrition): This is the scientific name for organisms that get their food from other living things."
+        },
+        {
+          "type": "bullet",
+          "text": "🧬 Examples: Animals, fungi, and most bacteria"
+        },
+        {
+          "type": "heading",
+          "text": "🔍 Different Food, Different Strategies"
+        },
+        {
+          "type": "bullet",
+          "text": "Every organism is adapted to its environment"
+        },
+        {
+          "type": "paragraph",
+          "text": "The way an organism gets food depends on:"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Type of food: Stationary (🌱) or mobile (🦌)?"
+        },
+        {
+          "type": "bullet",
+          "text": "2. Availability: Easy or hard to find?"
+        },
+        {
+          "type": "paragraph",
+          "text": "➡️ This leads to different nutritive structures. For example:"
+        },
+        {
+          "type": "bullet",
+          "text": "🐄 Cow (eats grass) vs 🦁 Lion (hunts deer)"
+        },
+        {
+          "type": "heading",
+          "text": "🛠️ Three Main Strategies for Getting Food"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Break-down food outside the body:",
+          "subBullets": [
+            "Digestive juices released onto food outside the body",
+            "Food is broken down and then absorbed",
+            "🍄 Examples: Bread moulds, yeast, mushrooms"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "2. Take in whole food and digest inside:",
+          "subBullets": [
+            "Common in most animals",
+            "Food type and digestion depends on body structure"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "3. Parasitic nutrition (without killing the host):",
+          "subBullets": [
+            "Organism lives on or in another living thing (host)",
+            "Gets food and harms the host",
+            "🧟 Examples:",
+            "🌿 Cuscuta (amar-bel)",
+            "🐕 Ticks on dogs",
+            "🧑‍🦲 Lice in hair",
+            "🩸 Leeches",
+            "🪱 Tapeworms in intestines"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "7",
+      "topicTitle": "Amoeba & Paramoecium",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "How Do Organisms Obtain Their Nutrition? \uD83E\uDDA0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Food type and intake method varies ➡️ So, digestive systems vary too"
+        },
+        {
+          "type": "heading",
+          "text": "🧫 Nutrition in Single-Celled Organisms"
+        },
+        {
+          "type": "bullet",
+          "text": "Food is taken in by the whole surface of the cell"
+        },
+        {
+          "type": "bullet",
+          "text": "As organisms get complex, different parts do different jobs"
+        },
+        {
+          "type": "heading",
+          "text": "🦠 Example 1: Amoeba"
+        },
+        {
+          "type": "image",
+          "resName": "amoeba",
+          "height": 320
+        },
+        {
+          "type": "bullet",
+          "text": "Has a flexible shape"
+        },
+        {
+          "type": "bullet",
+          "text": "Uses pseudopodia (false feet) to take in food"
+        },
+        {
+          "type": "heading",
+          "text": "🔁 Process:"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Pseudopodia surround the food"
+        },
+        {
+          "type": "bullet",
+          "text": "2. Form a food vacuole inside the cell"
+        },
+        {
+          "type": "bullet",
+          "text": "3. Complex food ➡️ broken into simpler substances"
+        },
+        {
+          "type": "bullet",
+          "text": "4. Simple substances diffuse into cytoplasm"
+        },
+        {
+          "type": "bullet",
+          "text": "5. Undigested material is thrown out 🗑️"
+        },
+        {
+          "type": "heading",
+          "text": "🔬 Example 2: Paramoecium"
+        },
+        {
+          "type": "bullet",
+          "text": "Has a definite shape"
+        },
+        {
+          "type": "bullet",
+          "text": "Food is taken in at a specific spot"
+        },
+        {
+          "type": "heading",
+          "text": "💨 How does food reach that spot?"
+        },
+        {
+          "type": "bullet",
+          "text": "The body is covered in cilia (tiny hair-like structures)"
+        },
+        {
+          "type": "bullet",
+          "text": "Cilia move constantly to direct food to the opening"
+        }
+      ]
+    },
+    {
+      "topicId": "8",
+      "topicTitle": "Nutrition in 🧍‍",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Nutrition in Human Beings Part 1 \uD83E\uDDCD\u200D♂\uFE0F\uD83E\uDDCD"
+        },
+        {
+          "type": "paragraph",
+          "text": "Now let's see what happens to the food once it enters our body. We will discuss the amazing journey of food through our digestive system!"
+        },
+        {
+        "type": "image",
+        "resName": "alimentary_canal",
+        "height": 300
+        },
+        {
+          "type": "heading",
+          "text": "🧵 The Alimentary Canal: Our Food Tube"
+        },
+        {
+          "type": "bullet",
+          "text": "The alimentary canal is basically a long tube that extends from the mouth to the anus."
+        },
+        {
+          "type": "bullet",
+          "text": "This tube has different parts, and various regions are specialised to perform different functions."
+        },
+        {
+          "type": "heading",
+          "text": "🍽️ What happens to food when it enters our body?"
+        },
+        {
+          "type": "paragraph",
+          "text": "We eat many different types of food (like rice, dal, roti, vegetables 🥕). All of this food has to pass through the same digestive tract."
+        },
+        {
+          "type": "heading",
+          "text": "1. 👄 Processing in the Mouth (Buccal Cavity)"
+        },
+        {
+          "type": "bullet",
+          "text": "Crushing the food: The food has to be processed to generate particles that are small and have the same texture. This is achieved by crushing the food with our teeth."
+        },
+        {
+          "type": "bullet",
+          "text": "Wetting the food: The lining of the alimentary canal is very soft. To make the passage of food smooth, the food is also wetted."
+        },
+        {
+          "type": "bullet",
+          "text": "Saliva: When we eat something we like, our mouth 'waters'. This is not just water; it's a fluid called saliva, which is secreted by the salivary glands."
+        },
+        {
+          "type": "heading",
+          "text": "2. 🔬 Breaking Down Complex Food"
+        },
+        {
+          "type": "bullet",
+          "text": "The food we ingest is complex in nature."
+        },
+        {
+          "type": "bullet",
+          "text": "To be absorbed from the alimentary canal, it must be broken down into smaller molecules."
+        },
+        {
+          "type": "bullet",
+          "text": "This is done with the help of biological catalysts called enzymes.",
+          "subBullets": [
+            "Enzymes: Think of enzymes as tiny molecular scissors ✂️ that cut large, complex food molecules into smaller, simpler ones that our body can absorb."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Salivary Amylase: The saliva contains an enzyme called salivary amylase.",
+          "subBullets": [
+            "Its job is to break down starch (a complex carbohydrate) into simple sugar."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Mixing the food: The food is mixed thoroughly with saliva and moved around the mouth by the muscular tongue while we are chewing."
+        },
+        {
+          "type": "heading",
+          "text": "3. 🌀 Moving the Food Along"
+        },
+        {
+          "type": "bullet",
+          "text": "It is necessary to move the food in a regulated manner along the digestive tube so it can be processed properly in each part."
+        },
+        {
+          "type": "bullet",
+          "text": "The lining of the canal has muscles that contract rhythmically (in a wave-like motion) to push the food forward."
+        },
+        {
+          "type": "bullet",
+          "text": "These movements are called peristaltic movements, and they occur all along the gut (the alimentary canal)."
+        },
+        {
+          "type": "heading",
+          "text": "4. 🚶 The Journey to the Stomach"
+        },
+        {
+          "type": "bullet",
+          "text": "From the mouth, the food is taken to the stomach through the food-pipe or oesophagus."
+        },
+        {
+          "type": "heading",
+          "text": "5. 🫃 In the Stomach"
+        },
+        {
+          "type": "bullet",
+          "text": "The stomach is a large, J-shaped organ which expands when food enters it."
+        },
+        {
+          "type": "bullet",
+          "text": "The muscular walls of the stomach help in mixing the food thoroughly with more digestive juices."
+        },
+        {
+          "type": "bullet",
+          "text": "Digestion in the stomach is taken care of by the gastric glands present in the wall of the stomach."
+        },
+        {
+          "type": "paragraph",
+          "text": "These glands release three things:"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Hydrochloric acid (HCl): This creates an acidic medium inside the stomach. This acidic environment is necessary because it helps the enzyme pepsin to work."
+        },
+        {
+          "type": "bullet",
+          "text": "2. Pepsin: This is a protein-digesting enzyme. It starts the breakdown of proteins from our food."
+        },
+        {
+          "type": "bullet",
+          "text": "3. Mucus: This protects the inner lining of the stomach from the action of the acid under normal conditions. Without mucus, the strong acid would damage our stomach walls!"
+        },
+        {
+          "type": "heading",
+          "text": "💭 Thinking Point: Have you heard adults complaining about 'acidity'? Can this be related to what has been discussed above?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Yes! Sometimes, the stomach produces too much acid, which can cause a burning feeling. This is what people call acidity or heartburn."
+        }
+      ]
+    },
+    {
+      "topicId": "9",
+      "topicTitle": "Nutrition in 🧍",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Nutrition in Human Beings Part 2 \uD83E\uDDCD\u200D♂\uFE0F\uD83E\uDDCD\u200D"
+        },
+        {
+          "type": "heading",
+          "text": "🔄 6. From the Stomach to the Small Intestine"
+        },
+        {
+          "type": "bullet",
+          "text": "The exit of food from the stomach is regulated by a sphincter muscle. This muscle acts like a valve or gate, releasing food in small amounts into the small intestine."
+        },
+        {
+          "type": "bullet",
+          "text": "From the stomach, the food now enters the small intestine."
+        },
+        {
+          "type": "heading",
+          "text": "🌀 7. In the Small Intestine: The Main Site of Digestion"
+        },
+        {
+          "type": "bullet",
+          "text": "Longest Part: The small intestine is the longest part of the alimentary canal. It is fitted into a compact space in our belly because of extensive coiling (it's folded up many times)."
+        },
+        {
+          "type": "bullet",
+          "text": "Length differs in animals:",
+          "subBullets": [
+            "Herbivores (like cows 🐄) that eat grass need a longer small intestine to allow the cellulose (a tough carbohydrate in plants) to be digested.",
+            "Carnivores (like tigers 🐅) that eat meat have a shorter small intestine because meat is easier to digest."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Site of Complete Digestion: The small intestine is where the complete digestion of carbohydrates, proteins, and fats happens."
+        },
+        {
+          "type": "bullet",
+          "text": "It receives secretions (digestive juices) from the liver and the pancreas for this purpose."
+        },
+        {
+          "type": "heading",
+          "text": "� 8. Helpers in Digestion: Liver and Pancreas"
+        },
+        {
+          "type": "bullet",
+          "text": "Making food Alkaline: The food coming from the stomach is acidic. It has to be made alkaline (the opposite of acidic) for the pancreatic enzymes to work. Bile juice from the liver does this job."
+        },
+        {
+          "type": "heading",
+          "text": "🟡 Bile Juice (from the Liver):"
+        },
+        {
+          "type": "bullet",
+          "text": "Besides making the food alkaline, bile juice also acts on fats."
+        },
+        {
+          "type": "bullet",
+          "text": "Fats are present in the intestine as large globules (big drops), which makes it hard for enzymes to act on them."
+        },
+        {
+          "type": "bullet",
+          "text": "Bile salts (found in bile juice) break these large fat globules down into smaller globules. This is called emulsification."
+        },
+        {
+          "type": "bullet",
+          "text": "This increases the efficiency of enzyme action, just like soap helps break down dirt."
+        },
+        {
+          "type": "heading",
+          "text": "🔵 Pancreatic Juice (from the Pancreas):"
+        },
+        {
+          "type": "bullet",
+          "text": "The pancreas secretes pancreatic juice which contains two important enzymes:",
+          "subBullets": [
+            "Trypsin: for digesting proteins.",
+            "Lipase: for breaking down emulsified fats (the small fat globules created by bile salts)."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🟢 Intestinal Juice:"
+        },
+        {
+          "type": "bullet",
+          "text": "The walls of the small intestine also contain glands that secrete intestinal juice. The enzymes in this juice finally complete the digestion process."
+        },
+        {
+          "type": "heading",
+          "text": "✅ 9. The Final Products of Digestion"
+        },
+        {
+          "type": "paragraph",
+          "text": "The enzymes in the small intestine convert:"
+        },
+        {
+          "type": "bullet",
+          "text": "Proteins ➡️ amino acids"
+        },
+        {
+          "type": "bullet",
+          "text": "Complex carbohydrates ➡️ glucose"
+        },
+        {
+          "type": "bullet",
+          "text": "Fats ➡️ fatty acids and glycerol"
+        },
+        {
+          "type": "heading",
+          "text": "🧬 10. Absorption of Digested Food"
+        },
+        {
+          "type": "bullet",
+          "text": "The digested food is now ready to be absorbed. This is done by the walls of the intestine."
+        },
+        {
+          "type": "bullet",
+          "text": "The inner lining of the small intestine has numerous finger-like projections called villi."
+        },
+        {
+          "type": "heading",
+          "text": "Villi:"
+        },
+        {
+          "type": "bullet",
+          "text": "These villi increase the surface area for absorption. More surface area means faster and more efficient absorption."
+        },
+        {
+          "type": "bullet",
+          "text": "The villi are richly supplied with blood vessels. These blood vessels take the absorbed food (nutrients) to each and every cell of the body."
+        },
+        {
+          "type": "paragraph",
+          "text": "The cells then use this food for:"
+        },
+        {
+          "type": "bullet",
+          "text": "Obtaining energy ⚡"
+        },
+        {
+          "type": "bullet",
+          "text": "Building up new tissues 🧱"
+        },
+        {
+          "type": "bullet",
+          "text": "Repair of old tissues 🛠️"
+        },
+        {
+          "type": "heading",
+          "text": "🚽 11. In the Large Intestine"
+        },
+        {
+          "type": "bullet",
+          "text": "The unabsorbed food is sent into the large intestine."
+        },
+        {
+          "type": "bullet",
+          "text": "Here, its wall absorbs more water from this material."
+        },
+        {
+          "type": "bullet",
+          "text": "The water absorbed is taken up by blood vessels."
+        },
+        {
+          "type": "bullet",
+          "text": "The rest of the material is removed from the body via the anus."
+        },
+        {
+          "type": "bullet",
+          "text": "The exit of this waste material is regulated by the anal sphincter."
+        },
+        {
+          "type": "heading",
+          "text": "💡 More to Know! Dental Caries 🦷"
+        },
+        {
+          "type": "bullet",
+          "text": "Dental caries or tooth decay causes the gradual softening of the enamel and dentine (the hard parts of the tooth)."
+        },
+        {
+          "type": "heading",
+          "text": "How it begins:"
+        },
+        {
+          "type": "bullet",
+          "text": "It starts when bacteria act on sugars in our mouth and produce acids. These acids soften or demineralise the enamel."
+        },
+        {
+          "type": "heading",
+          "text": "Dental Plaque:"
+        },
+        {
+          "type": "bullet",
+          "text": "Masses of bacterial cells, together with food particles, stick to the teeth to form dental plaque."
+        },
+        {
+          "type": "bullet",
+          "text": "Saliva cannot reach the tooth surface to neutralise the acid because the plaque covers the teeth."
+        },
+        {
+          "type": "heading",
+          "text": "Prevention:"
+        },
+        {
+          "type": "bullet",
+          "text": "Brushing the teeth after eating removes the plaque before the bacteria can produce acids."
+        },
+        {
+          "type": "heading",
+          "text": "If untreated:"
+        },
+        {
+          "type": "bullet",
+          "text": "Microorganisms may invade the pulp (the soft center of the tooth), causing inflammation (swelling) and infection."
+        }
+      ]
+    },
+    {
+      "topicId": "10",
+      "topicTitle": "Respiration",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Respiration Overview"
+        },
+        {
+          "type": "paragraph",
+          "text": "We have already learned how organisms get food (nutrition). Now, let's see how the food material taken in is used by the cells to provide energy for various life processes. This is called Respiration."
+        },
+        {
+          "type": "bullet",
+          "text": "Goal of Respiration: To break down food (like glucose) to release energy that the cell can use.⚡"
+        },
+        {
+          "type": "heading",
+          "text": "Diverse Methods"
+        },
+        {
+          "type": "bullet",
+          "text": "Different organisms do this in different ways."
+        },
+        {
+          "type": "bullet",
+          "text": "Some use oxygen to break down glucose completely."
+        },
+        {
+          "type": "bullet",
+          "text": "Some use other pathways that do not involve oxygen."
+        },
+        {
+          "type": "heading",
+          "text": "🚶 The First Step is Always the Same!"
+        },
+        {
+          "type": "bullet",
+          "text": "In all cases, the first step is the break-down of glucose."
+        },
+        {
+          "type": "bullet",
+          "text": "Glucose: A six-carbon molecule (C6 H12 O6 ) which is the main food source for energy."
+        },
+        {
+          "type": "bullet",
+          "text": "This first step breaks down glucose into a three-carbon molecule called pyruvate.",
+          "subBullets": [
+            "Pyruvate: Think of it as glucose being broken into two smaller pieces."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Where it happens: This process takes place in the cytoplasm of the cell."
+        },
+        {
+          "type": "heading",
+          "text": "🛤️ What happens to Pyruvate? The Three Pathways"
+        },
+        {
+          "type": "paragraph",
+          "text": "After pyruvate is made, it can follow three different paths, depending on the organism and whether oxygen is present."
+        },
+        {
+          "type": "heading",
+          "text": "❌💨 Pathway 1: In the absence of oxygen (Anaerobic Respiration)"
+        },
+        {
+          "type": "bullet",
+          "text": "Anaerobic (An = without, Aerobic = air/oxygen): This means respiration that happens *without* oxygen."
+        },
+        {
+          "type": "bullet",
+          "text": "Where it happens: This process takes place in yeast during fermentation."
+        },
+        {
+          "type": "bullet",
+          "text": "What happens: The pyruvate is converted into ethanol (a type of alcohol) and carbon dioxide. Energy is also released."
+        },
+        {
+          "type": "bullet",
+          "text": "Summary: Pyruvate (3-carbon) ➡️ Ethanol (2-carbon) + Carbon Dioxide + Energy"
+        },
+        {
+          "type": "heading",
+          "text": "✅💨 Pathway 2: In the presence of oxygen (Aerobic Respiration)"
+        },
+        {
+          "type": "bullet",
+          "text": "Aerobic: This means respiration that happens *with* oxygen."
+        },
+        {
+          "type": "bullet",
+          "text": "Where it happens: This process takes place in the mitochondria of the cell (the \"powerhouse\" of the cell)."
+        },
+        {
+          "type": "bullet",
+          "text": "What happens: This process breaks up the three-carbon pyruvate molecule to give three molecules of carbon dioxide. The other product is water."
+        },
+        {
+          "type": "bullet",
+          "text": "Energy Release: The release of energy in this aerobic process is a lot greater than in the anaerobic process."
+        },
+        {
+          "type": "bullet",
+          "text": "Summary: Pyruvate (3-carbon) ➡️ Carbon Dioxide + Water + Energy"
+        },
+        {
+          "type": "heading",
+          "text": "💪 Pathway 3: When there is a lack of oxygen (In our Muscle Cells)"
+        },
+        {
+          "type": "bullet",
+          "text": "When it happens: Sometimes, during sudden and heavy activity (like running very fast 🏃), our muscle cells don't get enough oxygen. They take another pathway for the break-down of pyruvate."
+        },
+        {
+          "type": "bullet",
+          "text": "What happens: Here, the pyruvate is converted into lactic acid, which is also a three-carbon molecule."
+        },
+        {
+          "type": "bullet",
+          "text": "Result: This build-up of lactic acid in our muscles during sudden activity causes cramps (painful muscle contractions)."
+        },
+        {
+          "type": "bullet",
+          "text": "Summary: Pyruvate (3-carbon) ➡️ Lactic Acid (3-carbon) + Energy"
+        },
+        {
+          "type": "heading",
+          "text": "💰 ATP: The Energy Currency of the Cell"
+        },
+        {
+          "type": "bullet",
+          "text": "The energy released during cellular respiration is immediately used to make a molecule called ATP."
+        },
+        {
+          "type": "bullet",
+          "text": "ATP (Adenosine Triphosphate): This is the energy currency for most cellular processes. Just like we use money (rupees) to buy things, the cell \"spends\" ATP to get things done."
+        },
+        {
+          "type": "bullet",
+          "text": "ATP is used to fuel all other activities in the cell."
+        },
+        {
+          "type": "heading",
+          "text": "How is ATP made?"
+        },
+        {
+          "type": "bullet",
+          "text": "The energy from respiration is used to make an ATP molecule from ADP and inorganic phosphate (P)."
+        },
+        {
+          "type": "bullet",
+          "text": "ADP (Adenosine Diphosphate): Think of ADP as a \"low battery\" 🪫."
+        },
+        {
+          "type": "bullet",
+          "text": "The Reaction: ADP + P + Energy ➡️ ATP (The \"fully charged battery\" 🔋)"
+        },
+        {
+          "type": "heading",
+          "text": "How is ATP used?"
+        },
+        {
+          "type": "bullet",
+          "text": "When the cell needs energy, the terminal (last) phosphate linkage in ATP is broken using water."
+        },
+        {
+          "type": "bullet",
+          "text": "This releases a fixed amount of energy that can drive the endothermic reactions taking place in the cell.",
+          "subBullets": [
+            "Endothermic Reactions: Chemical reactions that need energy to happen."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Think of how a battery can provide energy for many different uses (mechanical energy, light energy, etc.). Similarly, ATP can be used in the cells for many activities, such as:"
+        },
+        {
+          "type": "bullet",
+          "text": "Contraction of muscles 💪"
+        },
+        {
+          "type": "bullet",
+          "text": "Protein synthesis"
+        },
+        {
+          "type": "bullet",
+          "text": "Conduction of nervous impulses (sending signals through nerves) 🧠"
+        }
+      ]
+    },
+    {
+      "topicId": "11",
+      "topicTitle": "Getting Oxygen",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Getting Oxygen"
+        },
+        {
+          "type": "paragraph",
+          "text": "We know that aerobic respiration (respiration that uses oxygen) gives a lot more energy. Because this pathway depends on oxygen, aerobic organisms need to make sure that there is a sufficient intake of oxygen."
+        },
+        {
+          "type": "paragraph",
+          "text": "Let's see how different living things get their oxygen."
+        },
+        {
+          "type": "heading",
+          "text": "🌱 How do Plants get Oxygen?"
+        },
+        {
+          "type": "bullet",
+          "text": "We have seen that plants exchange gases through stomata (the tiny pores on leaves)."
+        },
+        {
+          "type": "bullet",
+          "text": "They also have large inter-cellular spaces (spaces between the cells)."
+        },
+        {
+          "type": "bullet",
+          "text": "These two things ensure that all cells are in contact with air."
+        },
+        {
+          "type": "bullet",
+          "text": "Carbon dioxide (CO2 ) and oxygen (O2 ) are exchanged by diffusion here.",
+          "subBullets": [
+            "Diffusion: The movement of particles from an area of high concentration to an area of low concentration. Think of the smell of an agarbatti spreading across a room. Gases move in and out of plant cells in a similar way."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "The direction of diffusion depends on two things:",
+          "subBullets": [
+            "The environmental conditions.",
+            "The requirements of the plant."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "☀️ vs. 🌃 Gas Exchange at Night vs. During the Day"
+        },
+        {
+          "type": "bullet",
+          "text": "At night 🌃:",
+          "subBullets": [
+            "There is no photosynthesis happening.",
+            "So, CO2 elimination is the major exchange activity going on. (Plants release CO2 just like us)."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "During the day ☀️:",
+          "subBullets": [
+            "The CO2 generated during respiration is used up for photosynthesis.",
+            "So, there is no CO2 release.",
+            "Instead, oxygen release is the major event at this time. (Plants release the oxygen made during photosynthesis)."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🐠🐒 How do Animals get Oxygen?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Animals have evolved different organs for the uptake of oxygen from the environment and for getting rid of the carbon dioxide produced."
+        },
+        {
+          "type": "heading",
+          "text": "1. Terrestrial Animals (Land Animals) 🐅"
+        },
+        {
+          "type": "bullet",
+          "text": "Terrestrial animals (animals that live on land) can breathe the oxygen in the atmosphere."
+        },
+        {
+          "type": "heading",
+          "text": "2. Aquatic Animals (Water Animals) 🐟"
+        },
+        {
+          "type": "bullet",
+          "text": "Aquatic animals (animals that live in water) need to use the oxygen dissolved in water."
+        },
+        {
+          "type": "heading",
+          "text": "😟 The Challenge for Aquatic Animals"
+        },
+        {
+          "type": "bullet",
+          "text": "The amount of dissolved oxygen in water is fairly low compared to the amount of oxygen in the air."
+        },
+        {
+          "type": "bullet",
+          "text": "Because of this, the rate of breathing in aquatic organisms is much faster than that seen in terrestrial organisms. They have to breathe more often to get enough oxygen."
+        },
+        {
+          "type": "bullet",
+          "text": "How Fishes Breathe:",
+          "subBullets": [
+            "Fishes take in water through their mouths.",
+            "They force this water past the gills.",
+            "In the gills, the dissolved oxygen is taken up by the blood."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🌬️ How Terrestrial Animals Breathe"
+        },
+        {
+          "type": "paragraph",
+          "text": "Terrestrial organisms use the oxygen in the atmosphere for respiration."
+        },
+        {
+          "type": "paragraph",
+          "text": "This oxygen is absorbed by different organs in different animals (for example, we have lungs)."
+        },
+        {
+          "type": "paragraph",
+          "text": "All these respiratory organs have some common features:"
+        },
+        {
+          "type": "bullet",
+          "text": "They have a structure that increases the surface area which is in contact with the oxygen-rich atmosphere. (More surface area = more oxygen can be absorbed)."
+        },
+        {
+          "type": "bullet",
+          "text": "This surface is very fine and delicate."
+        },
+        {
+          "type": "bullet",
+          "text": "To protect this delicate surface, it is usually placed within the body."
+        },
+        {
+          "type": "bullet",
+          "text": "Because it's inside the body, there have to be passages that will take air to this area (like our windpipe)."
+        },
+        {
+          "type": "bullet",
+          "text": "In addition, there is a mechanism for moving the air in and out of this area where the oxygen is absorbed (the process of breathing in and out)."
+        }
+      ]
+    },
+    {
+      "topicId": "12",
+      "topicTitle": "Human Respiration",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "The Human Respiratory System \uD83E\uDEC1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Let's explore the amazing system that allows us to breathe!"
+        },
+        {
+          "type": "image",
+          "resName": "human_respiratory_system",
+          "height": 230
+        },
+        {
+          "type": "heading",
+          "text": "🌬️ The Pathway of Air"
+        },
+        {
+          "type": "heading",
+          "text": "1. Through the Nostrils: 👃"
+        },
+        {
+          "type": "bullet",
+          "text": "In human beings, air is taken into the body through the nostrils (the two openings of our nose)."
+        },
+        {
+          "type": "bullet",
+          "text": "The air passing through the nostrils is filtered by fine hairs that line the passage."
+        },
+        {
+          "type": "bullet",
+          "text": "The passage is also lined with mucus, which helps in this filtering process (trapping dust and germs)."
+        },
+        {
+          "type": "heading",
+          "text": "2. To the Lungs:"
+        },
+        {
+          "type": "bullet",
+          "text": "From the nose, the air passes through the throat and into the lungs."
+        },
+        {
+          "type": "bullet",
+          "text": "Rings of cartilage are present in the throat.",
+          "subBullets": [
+            "Cartilage: A firm, flexible tissue (like the stuff your outer ear is made of).",
+            "Function: These rings ensure that the air-passage does not collapse."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "3. Inside the Lungs:"
+        },
+        {
+          "type": "bullet",
+          "text": "Within the lungs, the passage divides into smaller and smaller tubes."
+        },
+        {
+          "type": "bullet",
+          "text": "These tubes finally end in balloon-like structures which are called alveoli (singular: alveolus)."
+        },
+        {
+          "type": "heading",
+          "text": "✨ The Alveoli: Where the Magic Happens!"
+        },
+        {
+          "type": "bullet",
+          "text": "Alveoli: These are tiny air sacs at the end of the breathing tubes. Think of them like tiny balloons 🎈."
+        },
+        {
+          "type": "bullet",
+          "text": "Function: The alveoli provide a surface where the exchange of gases can take place."
+        },
+        {
+          "type": "bullet",
+          "text": "The walls of the alveoli contain an extensive network of blood-vessels (capillaries)."
+        },
+        {
+          "type": "heading",
+          "text": "😮‍💨 The Mechanism of Breathing"
+        },
+        {
+          "type": "bullet",
+          "text": "Breathing In (Inhalation):",
+          "subBullets": [
+            "When we breathe in, we lift our ribs and flatten our diaphragm.",
+            "Diaphragm: A large, dome-shaped muscle at the base of the lungs.",
+            "This makes the chest cavity larger.",
+            "Because of this, air is sucked into the lungs and fills the expanded alveoli."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Gas Exchange in Alveoli: 🔄",
+          "subBullets": [
+            "The blood brings carbon dioxide (CO2) from the rest of the body for release into the alveoli.",
+            "The oxygen (O2) in the alveolar air is taken up by blood in the alveolar blood vessels. This oxygen-rich blood is then transported to all the cells in the body."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Residual Volume of Air:",
+          "subBullets": [
+            "During the breathing cycle (breathing in and out), the lungs always contain a residual volume of air.",
+            "Residual Volume: A certain amount of air that always remains in the lungs.",
+            "Why is this important? It ensures that there is sufficient time for oxygen to be absorbed and for the carbon dioxide to be released."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🚚 Transporting Oxygen in Large Bodies"
+        },
+        {
+          "type": "paragraph",
+          "text": "When the body size of animals is large, diffusion pressure alone cannot take care of oxygen delivery to all parts of the body. Diffusion is too slow for big animals like us."
+        },
+        {
+          "type": "bullet",
+          "text": "The Solution: Respiratory Pigments",
+          "subBullets": [
+            "Respiratory pigments are special molecules that take up oxygen from the air in the lungs and carry it to tissues that are deficient in oxygen. Think of them as delivery trucks for oxygen."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Haemoglobin: Our Oxygen Carrier ❤️",
+          "subBullets": [
+            "In human beings, the respiratory pigment is haemoglobin.",
+            "Haemoglobin has a very high affinity for oxygen (it binds to oxygen very strongly).",
+            "Where is it found? This pigment is present in the red blood corpuscles (RBCs)."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Transporting Carbon Dioxide:",
+          "subBullets": [
+            "Carbon dioxide is more soluble in water than oxygen is.",
+            "Hence, it is mostly transported in the dissolved form in our blood."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🤔 Do You Know?"
+        },
+        {
+          "type": "heading",
+          "text": "🚭 Dangers of Smoking"
+        },
+        {
+          "type": "bullet",
+          "text": "Smoking is injurious to health. Lung cancer is one of the common causes of death in the world."
+        },
+        {
+          "type": "bullet",
+          "text": "The upper part of our respiratory tract has small hair-like structures called cilia."
+        },
+        {
+          "type": "bullet",
+          "text": "These cilia help to remove germs, dust, and other harmful particles from the air we inhale."
+        },
+        {
+          "type": "bullet",
+          "text": "Smoking destroys these cilia."
+        },
+        {
+          "type": "bullet",
+          "text": "Because of this, germs, dust, smoke, and other harmful chemicals can enter the lungs and cause infection, cough, and even lung cancer."
+        },
+        {
+          "type": "heading",
+          "text": "⭐ Amazing Facts about our Lungs!"
+        },
+        {
+          "type": "bullet",
+          "text": "If the surface of all our alveoli were spread out, it would cover about 80 square meters! This large surface makes the exchange of gases very efficient."
+        },
+        {
+          "type": "bullet",
+          "text": "If our body relied only on diffusion to move oxygen, it is estimated that it would take 3 years for a molecule of oxygen to get from our lungs to our toes. Aren’t you glad that we have haemoglobin? 😊"
+        }
+      ]
+    },
+    {
+      "topicId": "13",
+      "topicTitle": "Transportation in \uD83E\uDDCD\u200D♂",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Transportation in Human Beings Part 1"
+        },
+        {
+          "type": "paragraph",
+          "text": "We have seen how our body digests food and gets oxygen. But how do these useful substances reach all the cells? And how is waste removed? This is the job of our body's transportation system!"
+        },
+        {
+          "type": "heading",
+          "text": "📋 The Components of our Transport System"
+        },
+        {
+          "type": "bullet",
+          "text": "We have seen in previous sections that blood transports food, oxygen, and waste materials (like carbon dioxide from the cells and nitrogenous wastes like urea) in our bodies."
+        },
+        {
+          "type": "paragraph",
+          "text": "To do this job effectively, our body needs three main things:"
+        },
+        {
+          "type": "bullet",
+          "text": "1. A pumping organ to push blood around the body (our heart ❤️)."
+        },
+        {
+          "type": "bullet",
+          "text": "2. A network of tubes to reach all the tissues (our blood vessels)."
+        },
+        {
+          "type": "bullet",
+          "text": "3. A system to repair this network if it gets damaged (leaks)."
+        },
+        {
+          "type": "heading",
+          "text": "🩸 Blood: The Fluid Connective Tissue"
+        },
+        {
+          "type": "bullet",
+          "text": "Blood is a fluid connective tissue. It consists of two main parts:"
+        },
+        {
+          "type": "bullet",
+          "text": "Plasma: This is the fluid medium of the blood. The cells are suspended in it.",
+          "subBullets": [
+            "Function: Plasma transports food, carbon dioxide, and nitrogenous wastes in dissolved form."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Cells: These include Red Blood Corpuscles (RBCs), White Blood Corpuscles (WBCs), and platelets.",
+          "subBullets": [
+            "Red Blood Corpuscles (RBCs): Their main job is to carry oxygen."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Blood also transports many other substances, like salts."
+        },
+        {
+          "type": "heading",
+          "text": "❤️ Our Pump - The Heart"
+        },
+        {
+          "type": "image",
+          "resName": "heart",
+          "height": 280
+        },
+        {
+          "type": "bullet",
+          "text": "The heart is a muscular organ which is as big as our fist ✊."
+        },
+        {
+          "type": "bullet",
+          "text": "Because both oxygen and carbon dioxide have to be transported by the blood, the heart has different chambers."
+        },
+        {
+          "type": "bullet",
+          "text": "Why separate chambers? To prevent the oxygen-rich blood from mixing with the blood containing carbon dioxide."
+        },
+        {
+          "type": "heading",
+          "text": "🛤️ The Two-Step Journey of Blood"
+        },
+        {
+          "type": "image",
+          "resName": "lung",
+          "height": 280
+        },
+        {
+          "type": "bullet",
+          "text": "1. The carbon dioxide-rich blood has to reach the lungs so the carbon dioxide can be removed."
+        },
+        {
+          "type": "bullet",
+          "text": "2. The oxygenated blood (blood with oxygen) from the lungs has to be brought back to the heart. This oxygen-rich blood is then pumped to the rest of the body."
+        },
+        {
+          "type": "heading",
+          "text": "🗺️ Let's Follow the Blood Flow (Step-by-Step)"
+        },
+        {
+          "type": "heading",
+          "text": "The Left Side (Handles Oxygen-Rich Blood)"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Oxygen-rich blood from the lungs comes to the thin-walled upper chamber on the left, the left atrium."
+        },
+        {
+          "type": "bullet",
+          "text": "2. The left atrium relaxes when it is collecting this blood."
+        },
+        {
+          "type": "bullet",
+          "text": "3. Then, the left atrium contracts, while the next chamber, the left ventricle, relaxes. This transfers the blood to the left ventricle."
+        },
+        {
+          "type": "bullet",
+          "text": "4. When the muscular left ventricle contracts, the blood is pumped out to the body."
+        },
+        {
+          "type": "heading",
+          "text": "The Right Side (Handles Carbon Dioxide-Rich Blood)"
+        },
+        {
+          "type": "bullet",
+          "text": "1. De-oxygenated blood (blood without oxygen, but with CO2 ) comes from the body to the upper chamber on the right, the right atrium, as it relaxes."
+        },
+        {
+          "type": "bullet",
+          "text": "2. As the right atrium contracts, the corresponding lower chamber, the right ventricle, dilates (expands)."
+        },
+        {
+          "type": "bullet",
+          "text": "3. This transfers blood to the right ventricle, which in turn pumps it to the lungs for oxygenation."
+        },
+        {
+          "type": "bullet",
+          "text": "Thicker Ventricle Walls: The ventricles have to pump blood into various organs (all over the body or to the lungs). So, they have thicker muscular walls than the atria do."
+        },
+        {
+          "type": "bullet",
+          "text": "Valves: The heart has valves that ensure blood does not flow backwards when the atria or ventricles contract. They are like one-way doors �."
+        },
+        {
+          "type": "heading",
+          "text": "✅ Why Separation is Useful"
+        },
+        {
+          "type": "bullet",
+          "text": "The separation of the right and left sides of the heart is useful to keep oxygenated and de-oxygenated blood from mixing."
+        },
+        {
+          "type": "bullet",
+          "text": "This separation allows a highly efficient supply of oxygen to the body."
+        },
+        {
+          "type": "bullet",
+          "text": "This is very useful in animals that have high energy needs, such as birds 🐦 and mammals 🧍 (like us!). We constantly use energy to maintain our body temperature."
+        },
+        {
+          "type": "heading",
+          "text": "🐸 Hearts in Other Animals"
+        },
+        {
+          "type": "bullet",
+          "text": "Animals that do not use energy to maintain body temperature (their body temperature depends on the environment) can tolerate some mixing of blood."
+        },
+        {
+          "type": "bullet",
+          "text": "Amphibians (like frogs) and many reptiles (like lizards 🦎) have three-chambered hearts."
+        },
+        {
+          "type": "bullet",
+          "text": "Fishes 🐠, on the other hand, have only two chambers in their hearts."
+        },
+        {
+          "type": "bullet",
+          "text": "Blood is pumped to the gills, gets oxygenated there, and then passes directly to the rest of the body."
+        },
+        {
+          "type": "bullet",
+          "text": "So, blood goes only once through the heart in a fish during one cycle."
+        },
+        {
+          "type": "heading",
+          "text": "🔄 Double Circulation"
+        },
+        {
+          "type": "bullet",
+          "text": "In other vertebrates (including humans), blood goes through the heart twice during each cycle."
+        },
+        {
+          "type": "bullet",
+          "text": "This is known as double circulation."
+        }
+      ]
+    },
+    {
+      "topicId": "14",
+      "topicTitle": "Transportation in \uD83E\uDDCD\u200D♂",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Transportation in Human Beings Part 2"
+        },
+        {
+          "type": "heading",
+          "text": "🩺 Blood Pressure"
+        },
+        {
+          "type": "bullet",
+          "text": "What is Blood Pressure? It is the force that blood exerts against the wall of a vessel."
+        },
+        {
+          "type": "bullet",
+          "text": "This pressure is much greater in arteries than in veins."
+        },
+        {
+          "type": "bullet",
+          "text": "Systolic Pressure: This is the pressure of blood inside the artery during ventricular systole (when the ventricle contracts or pumps).",
+          "subBullets": [
+            "Normal Systolic Pressure is about 120 mm of Hg."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Diastolic Pressure: This is the pressure in the artery during ventricular diastole (when the ventricle relaxes or fills).",
+          "subBullets": [
+            "Normal Diastolic Pressure is about 80 mm of Hg."
+          ]
+        },
+        {
+          "type": "image",
+          "resName": "blood_pressure",
+          "height": 240
+        },
+        {
+          "type": "bullet",
+          "text": "How we write it: We write normal blood pressure as 120/80."
+        },
+        {
+          "type": "bullet",
+          "text": "Measuring Blood Pressure: It is measured with an instrument called a sphygmomanometer. 📏"
+        },
+        {
+          "type": "bullet",
+          "text": "High Blood Pressure (Hypertension): ⚠️",
+          "subBullets": [
+            "This is caused by the constriction of arterioles (small arteries), which results in increased resistance to blood flow.",
+            "It can be dangerous as it can lead to the rupture of an artery and internal bleeding."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🚇 The Tubes - Blood Vessels"
+        },
+        {
+          "type": "paragraph",
+          "text": "Our transport system has a network of tubes to carry blood. There are three main types:"
+        },
+        {
+          "type": "heading",
+          "text": "1. Arteries"
+        },
+        {
+          "type": "bullet",
+          "text": "Function: These are the vessels which carry blood away from the heart to various organs of the body."
+        },
+        {
+          "type": "bullet",
+          "text": "Pressure: The blood emerges from the heart under high pressure."
+        },
+        {
+          "type": "bullet",
+          "text": "Structure: Because of the high pressure, the arteries have thick, elastic walls."
+        },
+        {
+          "type": "heading",
+          "text": "2. Veins"
+        },
+        {
+          "type": "bullet",
+          "text": "Function: They collect the blood from different organs and bring it back to the heart."
+        },
+        {
+          "type": "bullet",
+          "text": "Pressure: The blood is no longer under high pressure in the veins."
+        },
+        {
+          "type": "bullet",
+          "text": "Structure: They do not need thick walls. Instead, they have valves that ensure the blood flows only in one direction (towards the heart)."
+        },
+        {
+          "type": "heading",
+          "text": "3. Capillaries"
+        },
+        {
+          "type": "bullet",
+          "text": "What they are: On reaching an organ or tissue, the artery divides into smaller and smaller vessels. The smallest vessels are called capillaries."
+        },
+        {
+          "type": "bullet",
+          "text": "Structure: They have walls which are one-cell thick."
+        },
+        {
+          "type": "bullet",
+          "text": "Function: This is where the real work happens! ✨ Exchange of material (like oxygen, food, CO2 , waste) between the blood and surrounding cells takes place across this thin wall."
+        },
+        {
+          "type": "bullet",
+          "text": "Connecting the system: The capillaries then join together to form veins that carry the blood away from the organ or tissue."
+        },
+        {
+          "type": "heading",
+          "text": "🩹 Maintenance by Platelets"
+        },
+        {
+          "type": "bullet",
+          "text": "What happens if this system of tubes develops a leak (for example, when we are injured and start bleeding)?"
+        },
+        {
+          "type": "bullet",
+          "text": "Naturally, the loss of blood from the system has to be minimised."
+        },
+        {
+          "type": "bullet",
+          "text": "Also, leakage would lead to a loss of pressure, which would reduce the efficiency of the pumping system."
+        },
+        {
+          "type": "heading",
+          "text": "The Solution: Platelets"
+        },
+        {
+          "type": "bullet",
+          "text": "To avoid this, the blood has platelet cells."
+        },
+        {
+          "type": "bullet",
+          "text": "These cells circulate around the body and plug these leaks by helping to clot the blood at these points of injury."
+        },
+        {
+          "type": "heading",
+          "text": "💧 Lymph: Another Transport Fluid"
+        },
+        {
+          "type": "paragraph",
+          "text": "There is another type of fluid also involved in transportation. This is called lymph or tissue fluid."
+        },
+        {
+          "type": "bullet",
+          "text": "How it's formed: Through the pores present in the walls of capillaries, some amount of plasma, proteins, and blood cells escape into the intercellular spaces (spaces between cells) in the tissues. This fluid is the lymph."
+        },
+        {
+          "type": "bullet",
+          "text": "What it's like: It is similar to the plasma of blood, but it is colourless and contains less protein."
+        },
+        {
+          "type": "heading",
+          "text": "How it circulates:"
+        },
+        {
+          "type": "bullet",
+          "text": "Lymph drains into lymphatic capillaries from the intercellular spaces."
+        },
+        {
+          "type": "bullet",
+          "text": "These join to form large lymph vessels."
+        },
+        {
+          "type": "bullet",
+          "text": "These vessels finally open into larger veins, returning the fluid to the blood."
+        },
+        {
+          "type": "heading",
+          "text": "Functions of Lymph:"
+        },
+        {
+          "type": "bullet",
+          "text": "It carries digested and absorbed fat from the intestine."
+        },
+        {
+          "type": "bullet",
+          "text": "It drains excess fluid from the extra-cellular space back into the blood."
+        }
+      ]
+    },
+    {
+      "topicId": "15",
+      "topicTitle": "Transportation in \uD83C\uDF31",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "Transportation in Plants"
+        },
+        {
+          "type": "paragraph",
+          "text": "We have discussed how plants take in simple compounds like CO2 and make energy (food) in their leaves. But they also need other raw materials to build their bodies."
+        },
+        {
+          "type": "heading",
+          "text": "📝 How do Plants get Raw Materials?"
+        },
+        {
+          "type": "bullet",
+          "text": "For plants, the soil is the nearest and richest source of raw materials like nitrogen, phosphorus, and other minerals."
+        },
+        {
+          "type": "bullet",
+          "text": "The absorption of these substances happens through the part in contact with the soil, which is the roots."
+        },
+        {
+          "type": "heading",
+          "text": "🚚 The Need for a Transport System"
+        },
+        {
+          "type": "bullet",
+          "text": "If the distances between the roots (in the soil) and the leaves (containing chlorophyll) are small, energy and raw materials can easily diffuse to all parts of the plant body."
+        },
+        {
+          "type": "bullet",
+          "text": "But if these distances become large (like in very tall trees 🌴), diffusion processes will not be sufficient to provide raw materials to the leaves and energy to the roots."
+        },
+        {
+          "type": "bullet",
+          "text": "Therefore, a proper system of transportation is essential in such situations."
+        },
+        {
+          "type": "heading",
+          "text": "🌿 vs 🚶 Plant vs. Animal Transport"
+        },
+        {
+          "type": "bullet",
+          "text": "Energy Needs: Energy needs are different for different body designs.",
+          "subBullets": [
+            "Plants do not move.",
+            "Plant bodies have a large proportion of dead cells in many tissues.",
+            "As a result, plants have low energy needs and can use relatively slow transport systems."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Distances: However, the distances over which these systems have to operate can be very large in plants like tall trees."
+        },
+        {
+          "type": "heading",
+          "text": "🛣️ The Two Transport Pathways"
+        },
+        {
+          "type": "paragraph",
+          "text": "Plant transport systems move two main things:"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Energy stores (food) from the leaves. 🍬"
+        },
+        {
+          "type": "bullet",
+          "text": "2. Raw materials from the roots. 💧"
+        },
+        {
+          "type": "paragraph",
+          "text": "These two pathways are constructed as independently organised conducting tubes."
+        },
+        {
+          "type": "bullet",
+          "text": "1. The Xylem: Moves water and minerals obtained from the soil."
+        },
+        {
+          "type": "bullet",
+          "text": "2. The Phloem: Transports products of photosynthesis (food) from the leaves to other parts of the plant."
+        },
+        {
+          "type": "heading",
+          "text": "💧 Transport of Water (The Xylem)"
+        },
+        {
+          "type": "bullet",
+          "text": "In the xylem tissue, the vessels and tracheids of the roots, stems, and leaves are interconnected."
+        },
+        {
+          "type": "bullet",
+          "text": "This forms a continuous system of water-conducting channels reaching all parts of the plant."
+        },
+        {
+          "type": "heading",
+          "text": "⬆️ How Water Moves Up:"
+        },
+        {
+          "type": "heading",
+          "text": "💪 Method 1: Root Pressure"
+        },
+        {
+          "type": "bullet",
+          "text": "At the roots, cells in contact with the soil actively take up ions. This requires energy."
+        },
+        {
+          "type": "bullet",
+          "text": "This creates a difference in the concentration of these ions between the root and the soil."
+        },
+        {
+          "type": "bullet",
+          "text": "To eliminate this difference, water moves into the root from the soil."
+        },
+        {
+          "type": "bullet",
+          "text": "This means there is a steady movement of water into the root xylem, creating a column of water that is steadily pushed upwards."
+        },
+        {
+          "type": "bullet",
+          "text": "Limitation: This pressure by itself is unlikely to be enough to move water over the great heights we commonly see in plants."
+        },
+        {
+          "type": "heading",
+          "text": "☀️💨 Method 2: Transpiration Pull"
+        },
+        {
+          "type": "bullet",
+          "text": "Plants use another strategy to move water in the xylem upwards to the highest points."
+        },
+        {
+          "type": "image",
+          "resName": "transpiration",
+          "height": 210
+        },
+        {
+          "type": "bullet",
+          "text": "Transpiration: The loss of water in the form of vapour from the aerial parts (leaves, stems) of the plant."
+        },
+        {
+          "type": "bullet",
+          "text": "How it works:",
+          "subBullets": [
+            "The evaporation of water molecules from the cells of a leaf creates a suction which pulls water from the xylem cells of the roots. It's like sipping a drink through a straw! 🥤"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Functions of Transpiration:",
+          "subBullets": [
+            "It helps in the absorption and upward movement of water and minerals dissolved in it from roots to the leaves.",
+            "It also helps in temperature regulation (cooling the plant). 🌡️"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "☀️ vs 🌃 Day vs. Night:",
+          "subBullets": [
+            "The effect of root pressure in transport of water is more important at night.",
+            "During the day, when the stomata are open, the transpiration pull becomes the major driving force in the movement of water in the xylem."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🍬 Transport of Food and Other Substances (The Phloem)"
+        },
+        {
+          "type": "bullet",
+          "text": "Translocation: The transport of soluble products of photosynthesis (food) is called translocation. It occurs in the part of the vascular tissue known as phloem."
+        },
+        {
+          "type": "bullet",
+          "text": "What is transported?",
+          "subBullets": [
+            "Besides the products of photosynthesis (like sucrose), the phloem also transports amino acids and other substances."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "🎯 Where is it delivered?",
+          "subBullets": [
+            "These substances are especially delivered to the storage organs (roots, fruits, seeds) and to growing organs (like buds)."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "How it happens:",
+          "subBullets": [
+            "Translocation takes place in the sieve tubes with the help of adjacent companion cells.",
+            "It can happen in both upward and downward directions. ↕️"
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "🔋 Energy is Required:",
+          "subBullets": [
+            "Unlike transport in xylem (which can be explained by simple physical forces), translocation in phloem is achieved by utilising energy.",
+            "Material like sucrose is transferred into phloem tissue using energy from ATP.",
+            "This increases the osmotic pressure of the tissue, causing water to move into it.",
+            "This pressure moves the material in the phloem to tissues which have less pressure."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "According to the Plant's Needs:",
+          "subBullets": [
+            "This allows the phloem to move material according to the plant's needs.",
+            "For example: In the spring, sugar stored in the root or stem tissue would be transported to the buds, which need energy to grow. 🌸"
+          ]
+        }
+      ]
+    },
+    {
+      "topicId": "16",
+      "topicTitle": "Excretion",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "\uD83D\uDEBD Excretion"
+        },
+        {
+          "type": "paragraph",
+          "text": "We have already discussed how organisms get rid of gaseous wastes (like CO2 ) generated during photosynthesis or respiration. But other metabolic activities (chemical reactions in the body) generate nitrogenous materials which also need to be removed."
+        },
+        {
+          "type": "bullet",
+          "text": "Nitrogenous Materials: These are harmful, poisonous waste products made in the body, such as urea and uric acid."
+        },
+        {
+          "type": "bullet",
+          "text": "Excretion: The biological process involved in the removal of these harmful metabolic wastes from the body is called excretion."
+        },
+        {
+          "type": "bullet",
+          "text": "Different Strategies: Different organisms use varied strategies to do this.",
+          "subBullets": [
+            "Many unicellular organisms remove these wastes by simple diffusion from the body surface into the surrounding water.",
+            "As we have seen in other processes, complex multi-cellular organisms use specialised organs to perform the same function."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🧍‍♂️🧍‍♀️ Excretion in Human Beings"
+        },
+        {
+          "type": "heading",
+          "text": "🗺️ The Human Excretory System"
+        },
+        {
+          "type": "paragraph",
+          "text": "The excretory system of human beings includes:"
+        },
+        {
+          "type": "image",
+          "resName": "excretory_system_human",
+          "height": 280
+        },
+        {
+          "type": "bullet",
+          "text": "A pair of kidneys"
+        },
+        {
+          "type": "bullet",
+          "text": "A pair of ureters (tubes from the kidneys)"
+        },
+        {
+          "type": "bullet",
+          "text": "A urinary bladder (a storage bag)"
+        },
+        {
+          "type": "bullet",
+          "text": "A urethra (the exit tube)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Location: Kidneys are located in the abdomen, one on either side of the backbone."
+        },
+        {
+          "type": "paragraph",
+          "text": "Path of Urine: Urine produced in the kidneys passes through the ureters into the urinary bladder, where it is stored until it is released through the urethra."
+        },
+        {
+          "type": "heading",
+          "text": "🤔 How is Urine Produced?"
+        },
+        {
+          "type": "bullet",
+          "text": "Purpose: The purpose of making urine is to filter out waste products from the blood."
+        },
+        {
+          "type": "bullet",
+          "text": "Analogy: Just as CO2 is removed from the blood in the lungs, nitrogenous waste such as urea or uric acid are removed from blood in the kidneys."
+        },
+        {
+          "type": "heading",
+          "text": "✨ The Nephron: The Filtration Unit"
+        },
+        {
+          "type": "image",
+          "resName": "nephron",
+          "height": 280
+        },
+        {
+          "type": "bullet",
+          "text": "It is no surprise that the basic filtration unit in the kidneys, like in the lungs, is a cluster of very thin-walled blood capillaries."
+        },
+        {
+          "type": "bullet",
+          "text": "Glomerulus: Each capillary cluster in the kidney is called the glomerulus."
+        },
+        {
+          "type": "bullet",
+          "text": "Bowman's capsule: The glomerulus is associated with the cup-shaped end of a coiled tube called Bowman's capsule, which collects the filtrate."
+        },
+        {
+          "type": "bullet",
+          "text": "Nephron: Each kidney has large numbers of these filtration units called nephrons packed close together."
+        },
+        {
+          "type": "heading",
+          "text": "💧 The Process of Urine Formation"
+        },
+        {
+          "type": "bullet",
+          "text": "1. Filtration: Blood enters the glomerulus, and the high pressure forces water and small substances (like glucose, amino acids, salts, urea) out of the blood and into the Bowman's capsule. This is the initial filtrate."
+        },
+        {
+          "type": "bullet",
+          "text": "2. Selective Re-absorption:",
+          "subBullets": [
+            "As the urine flows along the tube part of the nephron, some substances in the initial filtrate are selectively re-absorbed.",
+            "The body takes back useful things like glucose, amino acids, salts, and a major amount of water.",
+            "The amount of water re-absorbed depends on:",
+            "How much excess water there is in the body.",
+            "How much dissolved waste there is to be excreted."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "3. Urine Collection and Storage:",
+          "subBullets": [
+            "The urine forming in each kidney eventually enters a long tube, the ureter.",
+            "The ureter connects the kidneys with the urinary bladder.",
+            "Urine is stored in the urinary bladder until the pressure of the expanded bladder leads to the urge to pass it out through the urethra.",
+            "The bladder is muscular, so it is under nervous control. As a result, we can usually control the urge to urinate."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "🏥 Artificial kidney (Hemodialysis)"
+        },
+        {
+          "type": "bullet",
+          "text": "Why it's needed: Kidneys are vital organs for survival. Factors like infections, injury, or restricted blood flow to kidneys can reduce their activity. This leads to the accumulation of poisonous wastes in the body, which can even lead to death. In case of kidney failure, an artificial kidney can be used."
+        },
+        {
+          "type": "bullet",
+          "text": "What it is: An artificial kidney is a device to remove nitrogenous waste products from the blood through dialysis."
+        },
+        {
+          "type": "image",
+          "resName": "artificial_kidney",
+          "height": 160
+        },
+        {
+          "type": "bullet",
+          "text": "How it works:",
+          "subBullets": [
+            "Artificial kidneys contain a number of tubes with a semi-permeable lining, suspended in a tank filled with dialysing fluid.",
+            "This fluid has the same osmotic pressure as blood, except that it is devoid of nitrogenous wastes.",
+            "The patient's blood is passed through these tubes.",
+            "During this passage, the waste products from the blood pass into the dialysing fluid by diffusion.",
+            "The purified blood is pumped back into the patient."
+          ]
+        },
+        {
+          "type": "bullet",
+          "text": "Difference from a real kidney: This is similar to the function of the kidney, but it is different since there is no re-absorption involved."
+        },
+        {
+          "type": "bullet",
+          "text": "Amazing Fact: Normally, in a healthy adult, the initial filtrate in the kidneys is about 180 Litres daily! However, the volume actually excreted is only a litre or two a day, because the remaining filtrate is re-absorbed in the kidney tubules."
+        },
+        {
+          "type": "heading",
+          "text": "💝 Organ Donation"
+        },
+        {
+          "type": "bullet",
+          "text": "Organ donation is a generous act of donating an organ to a person who suffers from non-function of organ(s)."
+        },
+        {
+          "type": "bullet",
+          "text": "Donation of an organ may be done by the consent of the donor and his/her family."
+        },
+        {
+          "type": "bullet",
+          "text": "Anyone regardless of age or gender can become an organ and tissue donor."
+        },
+        {
+          "type": "bullet",
+          "text": "Organ transplants can save or transform the life of a person."
+        },
+        {
+          "type": "bullet",
+          "text": "Transplantation is required because a recipient’s organ has been damaged or has failed by disease or injury."
+        },
+        {
+          "type": "bullet",
+          "text": "In organ transplantation, the organ is surgically removed from one person (the organ donor) and transplanted to another person (the recipient)."
+        },
+        {
+          "type": "bullet",
+          "text": "Common transplantations include corneas, kidneys, heart, liver, pancreas, lungs, intestines, and bone marrow."
+        },
+        {
+          "type": "bullet",
+          "text": "Most organ and tissue donations occur just after the donor has died or when the doctor declares a person brain dead."
+        },
+        {
+          "type": "bullet",
+          "text": "But some organs (such as a kidney, part of a liver, lung, etc.) and tissues can be donated while the donor is alive."
+        }
+      ]
+    },
+    {
+      "topicId": "17",
+      "topicTitle": "Excretion in \uD83C\uDF31",
+      "content": [
+        {
+          "type": "topic_name",
+          "text": "\uD83C\uDF31 Excretion in Plants"
+        },
+        {
+          "type": "paragraph",
+          "text": "Plants use completely different strategies for excretion than those of animals. Let's see how they get rid of their waste products."
+        },
+        {
+          "type": "heading",
+          "text": "💨 Getting Rid of Gaseous Wastes"
+        },
+        {
+          "type": "bullet",
+          "text": "Oxygen itself can be thought of as a waste product generated during photosynthesis!"
+        },
+        {
+          "type": "bullet",
+          "text": "We have already discussed how plants deal with oxygen as well as CO2. They use stomata for gas exchange."
+        },
+        {
+          "type": "heading",
+          "text": "💧 Getting Rid of Excess Water"
+        },
+        {
+          "type": "bullet",
+          "text": "Plants can get rid of excess water by transpiration. (The loss of water vapour from leaves)."
+        },
+        {
+          "type": "heading",
+          "text": "🗑️ Getting Rid of Other Wastes"
+        },
+        {
+          "type": "paragraph",
+          "text": "For other wastes, plants use several clever strategies:"
+        },
+        {
+          "type": "bullet",
+          "text": "Using Dead Tissues: Plants use the fact that many of their tissues consist of dead cells, and they can store waste products in them."
+        },
+        {
+          "type": "bullet",
+          "text": "Losing Parts: They can even lose some parts such as leaves. Many plant waste products are stored in leaves that fall off. 🍂"
+        },
+        {
+          "type": "bullet",
+          "text": "Cellular Vacuoles: Many plant waste products are stored in cellular vacuoles (the large, empty-looking spaces inside plant cells)."
+        },
+        {
+          "type": "bullet",
+          "text": "Resins and Gums: Other waste products are stored as resins and gums, especially in old xylem. You might have seen these sticky substances on the bark of some trees."
+        },
+        {
+          "type": "bullet",
+          "text": "Excreting into the Soil: Plants also excrete some waste substances into the soil around them."
+        }
+      ]
+    }
+  ]
+}
