@@ -64,4 +64,3 @@ val ZoomIn: ImageVector
     }
 
 private var _ZoomIn: ImageVector? = null
-

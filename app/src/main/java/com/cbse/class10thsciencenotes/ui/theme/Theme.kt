@@ -16,55 +16,95 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-// --- NEW COLOR PALETTE ---
-
-// Dark Theme Colors
-val DarkMidnightBlue = Color(0xFF0A0F1A) // Deep, rich background
-val DarkTextPrimary = Color(0xFFF0F8FF)    // AliceBlue, very soft off-white
-val DarkTextSecondary = Color(0xFFB0C4DE)  // LightSteelBlue, for subtitles
-val DarkGlass = Color(0x401A203A)         // Translucent dark blue
-val DarkAccent = Color(0xFF00BFFF)        // DeepSkyBlue, for icons/glow
-val DarkBorder = Color(0x80FFFFFF)       // Translucent white border
-
-// Light Theme Colors
-val LightSkyBlue = Color(0xFFF0F8FF)     // Very light background
-val LightTextPrimary = Color(0xFF0D253F)   // Dark, saturated blue
-val LightTextSecondary = Color(0xFF4A5568) // Greyish blue
-val LightGlass = Color(0x60FFFFFF)        // Frosted white glass
-val LightAccent = Color(0xFF007BFF)       // Bright, clear blue
-val LightBorder = Color(0x80D0E0FF)      // Translucent light blue border
-
-// --- COLOR SCHEMES ---
-
-private val DarkColorScheme = darkColorScheme(
-    primary = DarkAccent,
-    background = DarkMidnightBlue,
-    onBackground = DarkTextPrimary,
-    surface = DarkGlass, // This is your glass color
-    onSurface = DarkTextPrimary,
-    outline = DarkBorder // This is your glass border
-)
+/**
+ * Material 3 Color Scheme Mapping
+ * Maps our custom design colors to Material 3 semantic color roles
+ */
 
 private val LightColorScheme = lightColorScheme(
-    primary = LightAccent,
-    background = LightSkyBlue,
+    // Primary - Main brand color (Purple)
+    primary = LightPrimary,
+    onPrimary = LightOnPrimary,
+    primaryContainer = LightPrimaryEnd,
+    onPrimaryContainer = LightTextPrimary,
+
+    // Secondary - Accent color (Coral)
+    secondary = LightAccentCoral,
+    onSecondary = Color.White,
+    secondaryContainer = LightAccentCoral.copy(alpha = 0.2f),
+    onSecondaryContainer = LightTextPrimary,
+
+    // Tertiary - Additional accent
+    tertiary = LightPrimaryEnd,
+    onTertiary = Color.White,
+
+    // Background
+    background = LightBackground,
     onBackground = LightTextPrimary,
-    surface = LightGlass,
+
+    // Surface (Cards, etc.)
+    surface = LightSurface,
     onSurface = LightTextPrimary,
-    outline = LightBorder
+    surfaceVariant = LightSurfaceVariant,
+    onSurfaceVariant = LightTextSecondary,
+
+    // Outline (Borders, dividers)
+    outline = LightTextTertiary.copy(alpha = 0.3f),
+    outlineVariant = LightTextTertiary.copy(alpha = 0.15f),
+
+    // Error
+    error = Color(0xFFE53935),
+    onError = Color.White
 )
 
-// --- THEME COMPOSABLE ---
+private val DarkColorScheme = darkColorScheme(
+    // Primary - Main brand color (Lighter Purple for dark mode)
+    primary = DarkPrimary,
+    onPrimary = DarkOnPrimary,
+    primaryContainer = DarkPrimaryEnd,
+    onPrimaryContainer = DarkTextPrimary,
+
+    // Secondary - Accent color (Lighter Coral for dark mode)
+    secondary = DarkAccentCoral,
+    onSecondary = Color.White,
+    secondaryContainer = DarkAccentCoral.copy(alpha = 0.2f),
+    onSecondaryContainer = DarkTextPrimary,
+
+    // Tertiary - Additional accent
+    tertiary = DarkPrimaryEnd,
+    onTertiary = Color.White,
+
+    // Background
+    background = DarkBackground,
+    onBackground = DarkTextPrimary,
+
+    // Surface (Cards, etc.)
+    surface = DarkSurface,
+    onSurface = DarkTextPrimary,
+    surfaceVariant = DarkSurfaceVariant,
+    onSurfaceVariant = DarkTextSecondary,
+
+    // Outline (Borders, dividers)
+    outline = DarkTextTertiary.copy(alpha = 0.4f),
+    outlineVariant = DarkTextTertiary.copy(alpha = 0.2f),
+
+    // Error
+    error = Color(0xFFEF5350),
+    onError = Color.White
+)
 
 @Composable
 fun Class10thScienceNotesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false, // Disabled by default to use our custom theme
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
-
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
@@ -73,14 +113,14 @@ fun Class10thScienceNotesTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.background.toArgb() // Set status bar color
+            window.statusBarColor = colorScheme.background.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = MaterialTheme.typography, // You can define typography in ui/theme/Type.kt
+        typography = Typography,
         content = content
     )
 }

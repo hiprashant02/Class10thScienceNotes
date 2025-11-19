@@ -1,301 +1,297 @@
-package com.cbse.class10thsciencenotes.ui.pages//import android.os.Build
-import android.os.Build
+package com.cbse.class10thsciencenotes.ui.pages
+
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Assignment
-import androidx.compose.material.icons.automirrored.outlined.Note
+import androidx.compose.material.icons.automirrored.outlined.Notes
 import androidx.compose.material.icons.outlined.AutoStories
 import androidx.compose.material.icons.outlined.Ballot
 import androidx.compose.material.icons.outlined.Quiz
 import androidx.compose.material.icons.outlined.WorkspacePremium
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
-import androidx.compose.ui.draw.BlurredEdgeTreatment
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.automirrored.outlined.Notes
-import androidx.compose.material3.ripple
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.text.style.TextAlign
+import com.cbse.class10thsciencenotes.ui.theme.AppDimensions
+import com.cbse.class10thsciencenotes.ui.theme.AppTheme
+import com.cbse.class10thsciencenotes.ui.theme.withCardAlpha
 
-
-// 1. Data model for the grid items
-enum class Study_Option{
-    Notes,Revision_Notes,Intext_Questions,BackExercise_Questions, Exemplar, Practise_MCQs
+// --- 1. Data Model (KEPT YOUR ORIGINAL DATA) ---
+enum class Study_Option {
+    Notes, Revision_Notes, Intext_Questions, BackExercise_Questions, Exemplar, Practise_MCQs
 }
+
 data class StudyOption(
     val title: String,
     val subtitle: String,
     val icon: ImageVector,
-    val color: Color, // Added a color for each item,
+    val color: Color,
     val type: Study_Option
 )
 
-// 2. Dummy datax
+// --- 2. Dummy Data (KEPT YOUR ORIGINAL DATA) ---
 val studyOptions = listOf(
     StudyOption(
         "Notes",
-        "Full Detailed chapter notes.", // Was: "Lack concept clarity? w"
+        "Full Detailed chapter notes.",
         Icons.AutoMirrored.Outlined.Notes,
         Color(0xFF03A9F4),
         Study_Option.Notes
     ),
     StudyOption(
         "Revision Notes",
-        "Quick revision Notes.", // Was: "Studied chapter already? This is for you"
+        "Quick revision Notes.",
         Icons.Outlined.AutoStories,
         Color(0xFF4CAF50),
         Study_Option.Revision_Notes
     ),
     StudyOption(
         "InText Questions",
-        "in-chapter questions.", // Was: "Questions"
+        "in-chapter questions.",
         Icons.Outlined.Quiz,
         Color(0xFFF44336),
         Study_Option.Intext_Questions
     ),
     StudyOption(
-        "Back Exercise Questions", // Corrected spelling
-        "All exercise solutions.", // Was: "Practice"
+        "Back Exercise Questions",
+        "All exercise solutions.",
         Icons.AutoMirrored.Filled.Assignment,
         Color(0xFFFF9800),
         Study_Option.BackExercise_Questions
     ),
     StudyOption(
         "Exemplar",
-        "Advanced & tricky problems.", // Was: "Questions"
+        "Advanced & tricky problems.",
         Icons.Outlined.WorkspacePremium,
         Color(0xFF9C27B0),
         Study_Option.Exemplar
     ),
     StudyOption(
         "Practise MCQs",
-        "Test your Knowledge.", // Was: "More"
+        "Test your Knowledge.",
         Icons.Outlined.Ballot,
         Color(0xFF009688),
         Study_Option.Practise_MCQs
     )
 )
 
-// 3. The main screen composable
+// --- 3. Main Screen Composable (Using Theme System) ---
 @Composable
 fun StudyDashboardScreen(onClick: (StudyOption) -> Unit) {
-    val scrollState = rememberScrollState()
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background) // Ensure background is set
-    ) {
-        // Layer 1: The animated background
-        AuroraBackground()
-
-        // Layer 2: The content on top
-        // <-- IMPROVEMENT 1: Layout Hierarchy
-        // The header is now in its own Column, separate from the grid
+    Scaffold(
+        containerColor = MaterialTheme.colorScheme.background
+    ) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(scrollState)
-                .padding(horizontal = 16.dp, vertical = 32.dp)
+                .fillMaxSize()
+                .padding(paddingValues)
         ) {
-            // Header Text
-            Spacer(Modifier.height(36.dp))
-            Text(
-                text = "Study Hub",
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-            Text(
-                text = "Welcome back, let's get studying!",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
-            )
+            // Beautiful Header
+            StudyDashboardHeader()
 
-            Spacer(modifier = Modifier.height(0.dp))
-        }
-
-        // The Grid of glassmorphic cards now scrolls *under* the header
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            // <-- IMPROVEMENT 1: Padding is adjusted to fit under the static header
-            contentPadding = PaddingValues(top = 160.dp, start = 16.dp, end = 16.dp, bottom = 40.dp)
-        ) {
-            items(studyOptions) { option ->
-                GlassmorphicCard(item = option){
-                    onClick.invoke(it)
+            // Scrolling Grid with cards
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(AppDimensions.CardSpacing.dp),
+                horizontalArrangement = Arrangement.spacedBy(AppDimensions.CardSpacing.dp),
+                contentPadding = PaddingValues(
+                    top = AppDimensions.ContentPaddingVertical.dp,
+                    start = AppDimensions.ContentPaddingHorizontal.dp,
+                    end = AppDimensions.ContentPaddingHorizontal.dp,
+                    bottom = AppDimensions.SpacingLarge.dp
+                )
+            ) {
+                items(studyOptions) { option ->
+                    ElegantStudyCard(item = option) {
+                        onClick.invoke(it)
+                    }
                 }
             }
         }
     }
 }
 
-// 4. The Glassmorphic Card composable
+// --- 4. Beautiful Header (Using Theme System) ---
 @Composable
-fun GlassmorphicCard(item: StudyOption,onClick:(StudyOption)-> Unit) {
-
-    // <-- IMPROVEMENT 2: Physical Interaction
-    val interactionSource = remember { MutableInteractionSource() }
-    val isPressed by interactionSource.collectIsPressedAsState()
-    val scale by animateFloatAsState(
-        targetValue = if (isPressed) 0.96f else 1f,
-        label = "scale"
-    )
-
+fun StudyDashboardHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .aspectRatio(1f) // Makes the card a square
-            .graphicsLayer { // Apply the scale animation
-                scaleX = scale
-                scaleY = scale
-            }
-            .clip(RoundedCornerShape(24.dp))
-            .clickable(
-                interactionSource = interactionSource,
-                indication = ripple() // No ripple, we have our own animation
-            ) { onClick.invoke(item) }
+            .height(AppDimensions.HeaderHeight.dp)
+            .clip(RoundedCornerShape(bottomStart = AppDimensions.HeaderCornerRadius.dp, bottomEnd = AppDimensions.HeaderCornerRadius.dp))
+            .background(brush = AppTheme.primaryGradientBrush)
     ) {
-        // --- LAYER 1: BACKGROUND (BLURRED) ---
+        // Decorative Circles for aesthetics
         Box(
             modifier = Modifier
-                .matchParentSize()
-                .glassBackground() // Use the new modifier
+                .offset(x = (-40).dp, y = (-40).dp)
+                .size(AppDimensions.DecorativeCircleSmall.dp)
+                .clip(CircleShape)
+                .background(AppTheme.decorativeColor)
+        )
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .offset(x = 20.dp, y = 40.dp)
+                .size(AppDimensions.DecorativeCirlceLarge.dp)
+                .clip(CircleShape)
+                .background(AppTheme.decorativeColor)
         )
 
-        // --- LAYER 2: FOREGROUND (NOT BLURRED) ---
         Column(
             modifier = Modifier
-                .matchParentSize()
-                .padding(8.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .align(Alignment.CenterStart)
+                .padding(AppDimensions.SpacingLarge.dp)
         ) {
-            // --- ICON ---
-            Icon(
-                imageVector = item.icon,
-                contentDescription = item.title,
-                tint = item.color,
-                modifier = Modifier
-                    .background(Color.Transparent)
-                    .size(48.dp)
-                    .graphicsLayer(
-                        shadowElevation = 15f,
-                        spotShadowColor = item.color.copy(alpha = 0.5f)
-                    )
+            Text(
+                text = "CLASS 10TH SCIENCE",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
+                letterSpacing = 2.sp
             )
+            Spacer(modifier = Modifier.height(AppDimensions.SpacingSmall.dp))
+            Text(
+                text = "Study Hub",
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+            Text(
+                text = "Choose your learning path",
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
+            )
+        }
+    }
+}
 
-            // --- TEXT ---
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+// --- 5. Elegant Study Card (Using Theme System) ---
+@Composable
+fun ElegantStudyCard(item: StudyOption, onClick: (StudyOption) -> Unit) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
+    // Smooth scale animation
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.95f else 1f,
+        animationSpec = tween(durationMillis = 150),
+        label = "scale"
+    )
+
+    ElevatedCard(
+        onClick = { onClick.invoke(item) },
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(0.9f)
+            .graphicsLayer {
+                scaleX = scale
+                scaleY = scale
+            },
+        shape = RoundedCornerShape(AppDimensions.CardCornerRadius.dp),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = AppDimensions.CardElevationDefault.dp,
+            pressedElevation = AppDimensions.CardElevationPressed.dp
+        ),
+        interactionSource = interactionSource
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(AppDimensions.CardPadding.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            // Icon with subtle colored background
+            Box(
+                modifier = Modifier
+                    .size(AppDimensions.IconCircleSize.dp)
+                    .clip(CircleShape)
+                    .background(item.color.withCardAlpha()),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = item.icon,
+                    contentDescription = item.title,
+                    tint = item.color,
+                    modifier = Modifier.size(AppDimensions.IconSizeMedium.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(AppDimensions.SpacingMedium.dp))
+
+            // Text content
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
                 Text(
                     text = item.title,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 16.sp,
+                    fontSize = 15.sp,
                     textAlign = TextAlign.Center,
-
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onSurface,
+                    lineHeight = 20.sp
                 )
                 Text(
                     text = item.subtitle,
                     fontSize = 12.sp,
                     textAlign = TextAlign.Center,
-                    lineHeight = 13.sp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    lineHeight = 16.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(horizontal = 4.dp)
                 )
             }
         }
     }
 }
 
-// 5. The new glass background modifier
-fun Modifier.glassBackground(
-    shape: Shape = RoundedCornerShape(24.dp)
-): Modifier = composed {
-
-    val glassColor = MaterialTheme.colorScheme.surface
-    // Use the outline color for the sheen, but make it very subtle
-    val sheenColor = MaterialTheme.colorScheme.outline
-
-    val blurModifier = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-        this.blur(
-            radius = 32.dp,
-            edgeTreatment = BlurredEdgeTreatment(shape)
-        )
-    } else {
-        this.background(MaterialTheme.colorScheme.surface.copy(alpha = 0.7f))
-    }
-
-    this
-        .then(blurModifier)
-        .background(glassColor, shape) // This adds the main glass tint
-        // <-- IMPROVEMENT 3: Premium Material (Sheen)
-        // We add a nested Box to draw a subtle gradient border *inside*
-        // the main shape, which looks more premium than a simple outer border.
-        .then(
-            Modifier.border(
-                BorderStroke(
-                    width = 1.dp,
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            sheenColor.copy(alpha = 0.8f), // Faint highlight at the top
-                            sheenColor.copy(alpha = 0.2f)  // Fades out at the bottom
-                        )
+// --- 6. Modern Subtle Background ---
+@Composable
+fun ModernBackground() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFFF8F9FA),
+                        Color(0xFFE9ECEF)
                     )
-                ),
-                shape = shape
+                )
             )
-        )
+    )
 }
 
-// 6. The animated Aurora Background (with base gradient)
+// --- 7. Aurora Background (Kept for reference) ---
 @Composable
 fun AuroraBackground() {
     val configuration = LocalConfiguration.current
@@ -309,12 +305,11 @@ fun AuroraBackground() {
 
     val infiniteTransition = rememberInfiniteTransition(label = "aurora")
 
-    // <-- IMPROVEMENT 4: Slower, more "ethereal" animation
     val xOffset by infiniteTransition.animateFloat(
         initialValue = -screenWidthPx * 0.5f,
         targetValue = screenWidthPx * 0.5f,
         animationSpec = infiniteRepeatable(
-            animation = tween(10000, easing = LinearEasing), // Was 5000
+            animation = tween(10000, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         ), label = "xOffset"
     )
@@ -323,7 +318,7 @@ fun AuroraBackground() {
         initialValue = -screenHeightPx * 0.5f,
         targetValue = screenHeightPx * 0.5f,
         animationSpec = infiniteRepeatable(
-            animation = tween(12000, easing = LinearEasing), // Was 7000
+            animation = tween(12000, easing = LinearEasing),
             repeatMode = RepeatMode.Reverse
         ), label = "yOffset"
     )
@@ -349,8 +344,7 @@ fun AuroraBackground() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            // <-- IMPROVEMENT 4: Softer, more subtle blobs
-            .graphicsLayer(alpha = 0.7f) // Was 0.6f, let's try 0.7
+            .graphicsLayer(alpha = 0.7f)
     ) {
         // Blob 1 (Gold)
         Box(
@@ -360,7 +354,7 @@ fun AuroraBackground() {
                 .background(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            Color(0x99FFD700), // Was CC (80%), now 60%
+                            Color(0x99FFD700),
                             Color.Transparent
                         )
                     )
@@ -376,7 +370,7 @@ fun AuroraBackground() {
                 .background(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            Color(0x9900BFFF), // Was CC (80%), now 60%
+                            Color(0x9900BFFF),
                             Color.Transparent
                         )
                     )
@@ -392,7 +386,7 @@ fun AuroraBackground() {
                 .background(
                     brush = Brush.radialGradient(
                         colors = listOf(
-                            Color(0x999370DB), // Was CC (80%), now 60%
+                            Color(0x999370DB),
                             Color.Transparent
                         )
                     )
@@ -400,8 +394,6 @@ fun AuroraBackground() {
         )
     }
 }
-
-
 
 
 

@@ -32,14 +32,16 @@ class NotesViewModel : ViewModel() {
     }
 
     fun navigator(): String {
-        if (_studyOption.value.type == Study_Option.Notes) {
-            return Screen.Notes.route
-        } else if (_studyOption.value.type == Study_Option.Revision_Notes) return Screen.Notes.route
-        else if (_studyOption.value.type == Study_Option.Revision_Notes) return Screen.Notes.route
-        else if (_studyOption.value.type == Study_Option.Intext_Questions) return Screen.Questions.route
-        else if (_studyOption.value.type == Study_Option.BackExercise_Questions) return Screen.Questions.route
-        else if (_studyOption.value.type == Study_Option.Exemplar) return Screen.Notes.route
-        else return Screen.Notes.route
+        val chapterNumber = _currentChapter.value.id
+
+        return when (_studyOption.value.type) {
+            Study_Option.Notes -> "notes/chapter_${chapterNumber}.json"
+            Study_Option.Revision_Notes -> "notes/chapter_${chapterNumber}.json"
+            Study_Option.Intext_Questions -> Screen.Questions.route
+            Study_Option.BackExercise_Questions -> Screen.Questions.route
+            Study_Option.Exemplar -> "notes/chapter_${chapterNumber}.json"
+            Study_Option.Practise_MCQs -> Screen.Notes.route
+        }
     }
 
     var allTopics: List<TopicDto> = emptyList()

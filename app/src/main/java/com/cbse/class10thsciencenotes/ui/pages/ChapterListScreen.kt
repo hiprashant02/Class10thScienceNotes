@@ -142,7 +142,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.automirrored.filled.ArrowForwardIos
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -165,135 +165,172 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.cbse.class10thsciencenotes.data.Chapter
 import com.cbse.class10thsciencenotes.data.chapters
+import com.cbse.class10thsciencenotes.ui.theme.AppDimensions
+import com.cbse.class10thsciencenotes.ui.theme.AppTheme
+import com.cbse.class10thsciencenotes.ui.theme.withCardAlpha
+import com.cbse.class10thsciencenotes.ui.theme.withIconAlpha
+
+
+
 
 // 1. Data model for the Chapter list
 
-// 3. The main screen composable
+// 3. The main screen composable (Using Theme System)
 @Composable
 fun ChapterListScreen(onClick: (Chapter) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
     ) {
-        // Layer 1: The animated background (for consistency)
-        AuroraBackground()
-
-        // Layer 2: The content on top
-        // Header
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-                .padding(top = 32.dp, bottom = 24.dp)
-        ) {
-            Text(
-                text = "Select a Chapter",
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-            Text(
-                text = "Choose a topic to start studying.",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
-            )
-        }
-
-        // --- "WATERMARK CARD" LIST DESIGN ---
-        LazyColumn(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            // Start the list below the header
-            contentPadding = PaddingValues(
-                top = 140.dp,
-                start = 20.dp,
-                end = 20.dp,
-                bottom = 40.dp
-            ),
             modifier = Modifier.fillMaxSize()
         ) {
-            items(chapters) { chapter ->
-                // Use the new, clean list item
-                ChapterFocusCard(item = chapter) {
-                    onClick.invoke(it)
+            // Beautiful Header
+            ChapterListHeader()
+
+            // Chapter List
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(AppDimensions.CardSpacing.dp),
+                contentPadding = PaddingValues(
+                    top = AppDimensions.ContentPaddingVertical.dp,
+                    start = AppDimensions.ContentPaddingHorizontal.dp,
+                    end = AppDimensions.ContentPaddingHorizontal.dp,
+                    bottom = AppDimensions.SpacingLarge.dp
+                ),
+                modifier = Modifier.fillMaxSize()
+            ) {
+                items(chapters) { chapter ->
+                    ElegantChapterCard(item = chapter) {
+                        onClick.invoke(it)
+                    }
                 }
             }
         }
     }
 }
 
-// 4. The NEW "Watermark Hero Card"
+// 4. Beautiful Header (Using Theme System)
 @Composable
-fun ChapterFocusCard(item: Chapter, onClick: (Chapter) -> Unit) {
+fun ChapterListHeader() {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(AppDimensions.HeaderHeight.dp)
+            .clip(RoundedCornerShape(bottomStart = AppDimensions.HeaderCornerRadius.dp, bottomEnd = AppDimensions.HeaderCornerRadius.dp))
+            .background(brush = AppTheme.primaryGradientBrush)
+    ) {
+        // Decorative Circles for aesthetics
+        Box(
+            modifier = Modifier
+                .offset(x = (-40).dp, y = (-40).dp)
+                .size(AppDimensions.DecorativeCircleSmall.dp)
+                .clip(CircleShape)
+                .background(AppTheme.decorativeColor)
+        )
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomEnd)
+                .offset(x = 20.dp, y = 40.dp)
+                .size(AppDimensions.DecorativeCirlceLarge.dp)
+                .clip(CircleShape)
+                .background(AppTheme.decorativeColor)
+        )
+
+        Column(
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(AppDimensions.SpacingLarge.dp)
+        ) {
+            Text(
+                text = "CLASS 10TH SCIENCE",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
+                letterSpacing = 2.sp
+            )
+            Spacer(modifier = Modifier.height(AppDimensions.SpacingSmall.dp))
+            Text(
+                text = "All Chapters",
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onPrimary
+            )
+            Text(
+                text = "Select a chapter to begin",
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
+            )
+        }
+    }
+}
+
+// 5. Elegant Chapter Card (Using Theme System)
+@Composable
+fun ElegantChapterCard(item: Chapter, onClick: (Chapter) -> Unit) {
     val interactionSource = remember { MutableInteractionSource() }
-    val cardShape = RoundedCornerShape(20.dp)
 
     Card(
-        modifier = Modifier
-            .fillMaxWidth(),
-        shape = cardShape,
-        // This is NOT glass. It's 95% opaque, just to
-        // slightly tint with the background aurora.
+        onClick = { onClick.invoke(item) },
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(AppDimensions.CardCornerRadius.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.95f)
+            containerColor = MaterialTheme.colorScheme.surface
         ),
-        onClick = {
-            onClick.invoke(item)
-        },
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = AppDimensions.CardElevationDefault.dp,
+            pressedElevation = AppDimensions.CardElevationPressed.dp
+        ),
+        interactionSource = interactionSource
     ) {
-        // --- THIS IS THE NEW LAYOUT ---
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 20.dp), // Padding on the row
+                .padding(AppDimensions.CardPadding.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // --- NEW: Number Circle (Left side, not big) ---
+            // Number Circle (Left side)
             Box(
                 modifier = Modifier
-                    .size(40.dp)
+                    .size(AppDimensions.ChapterCircleSize.dp)
                     .clip(CircleShape)
-                    .background(item.color.copy(alpha = 0.15f)), // Faint background
+                    .background(item.color.withCardAlpha()),
                 contentAlignment = Alignment.Center
             ) {
                 Text(
                     text = item.id.toString(),
-                    color = item.color, // Strong color
+                    color = item.color,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp
+                    fontSize = 18.sp
                 )
             }
 
-            Spacer(Modifier.width(16.dp))
+            Spacer(Modifier.width(AppDimensions.SpacingMedium.dp))
 
-            // --- Chapter Text ---
+            // Chapter Text
             Column(
                 modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(4.dp)
+                verticalArrangement = Arrangement.spacedBy(AppDimensions.SpacingXSmall.dp)
             ) {
                 Text(
                     text = item.title,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 17.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onSurface,
-                    maxLines = 2
+                    lineHeight = 22.sp
                 )
                 Text(
                     text = "Chapter ${item.id}",
-                    fontSize = 14.sp,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                    maxLines = 3
+                    fontSize = 13.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
-            // --- Chevron Icon ---
+            // Chevron Icon
             Icon(
-                imageVector = Icons.Default.ArrowForwardIos,
+                imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                 contentDescription = "Go to chapter",
-                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
-                modifier = Modifier
-                    .padding(start = 16.dp)
-                    .size(16.dp)
+                tint = AppTheme.iconTint.withIconAlpha(),
+                modifier = Modifier.size(AppDimensions.IconSizeSmall.dp)
             )
         }
     }
