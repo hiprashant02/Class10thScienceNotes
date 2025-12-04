@@ -56,12 +56,13 @@ fun AppNavigator() {
         composable(
             route = Screen.Chapters.route
         ) { entry ->
-
-
-            ChapterListScreen { chapter ->
-                myViewModel.setCurrentChapter(chapter)
-                navController.navigate(myViewModel.navigator())
-            }
+            ChapterListScreen(
+                navController = navController,
+                onClick = { chapter ->
+                    myViewModel.setCurrentChapter(chapter)
+                    navController.navigate(myViewModel.navigator())
+                }
+            )
         }
 
 

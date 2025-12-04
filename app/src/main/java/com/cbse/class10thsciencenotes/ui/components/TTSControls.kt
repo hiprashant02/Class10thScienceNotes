@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun TTSFloatingControls(
     isPlaying: Boolean,
+    isPaused: Boolean = false,
     onPlayPause: () -> Unit,
     onStop: () -> Unit,
     speechRate: Float,
@@ -26,6 +27,12 @@ fun TTSFloatingControls(
     modifier: Modifier = Modifier
 ) {
     var showSpeedControl by remember { mutableStateOf(false) }
+    var tempSpeedRate by remember { mutableStateOf(speechRate) }
+
+    // Update temp when external speechRate changes
+    LaunchedEffect(speechRate) {
+        tempSpeedRate = speechRate
+    }
 
     Card(
         modifier = modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
@@ -34,11 +41,13 @@ fun TTSFloatingControls(
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column(modifier = Modifier.padding(12.dp)) {
+            // ...existing code...
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                // ...existing buttons code...
                 IconButton(
                     onClick = onStop,
                     modifier = Modifier.size(44.dp).background(Color(0xFFFF6B6B).copy(alpha = 0.1f), CircleShape)
@@ -49,13 +58,18 @@ fun TTSFloatingControls(
                 IconButton(
                     onClick = onPlayPause,
                     modifier = Modifier.size(56.dp).background(
-                        Brush.horizontalGradient(listOf(Color(0xFF6C63FF), Color(0xFF8E84FF))),
+                        Brush.horizontalGradient(
+                            listOf(
+                                if (isPaused) Color(0xFF4CAF50) else Color(0xFF6C63FF),
+                                if (isPaused) Color(0xFF66BB6A) else Color(0xFF8E84FF)
+                            )
+                        ),
                         CircleShape
                     )
                 ) {
                     Icon(
                         if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
-                        if (isPlaying) "Pause" else "Play",
+                        if (isPlaying) "Pause" else if (isPaused) "Resume" else "Play",
                         tint = Color.White,
                         modifier = Modifier.size(28.dp)
                     )
@@ -72,14 +86,23 @@ fun TTSFloatingControls(
             AnimatedVisibility(visible = showSpeedControl) {
                 Column(modifier = Modifier.fillMaxWidth().padding(top = 12.dp)) {
                     Text(
-                        "Speed: ${String.format("%.1fx", speechRate)}",
+                        "Speed: ${String.format(java.util.Locale.US, "%.1fx", tempSpeedRate)}",
                         fontSize = 11.sp,
                         color = Color(0xFF2D3436),
                         modifier = Modifier.padding(bottom = 6.dp)
                     )
                     Slider(
-                        value = speechRate,
-                        onValueChange = onSpeechRateChange,
+                        value = tempSpeedRate,
+                        onValueChange = { newRate ->
+                            // Update temp value for display
+                            tempSpeedRate = newRate
+                            // Apply immediately to TTS for live speed change
+                            onSpeechRateChange(newRate)
+                        },
+                        onValueChangeFinished = {
+                            // Ensure final value is applied
+                            onSpeechRateChange(tempSpeedRate)
+                        },
                         valueRange = 0.5f..2.0f,
                         steps = 14,
                         colors = SliderDefaults.colors(

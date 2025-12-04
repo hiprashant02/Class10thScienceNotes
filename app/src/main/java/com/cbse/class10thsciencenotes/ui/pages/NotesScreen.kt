@@ -2,8 +2,6 @@ package com.cbse.class10thsciencenotes.ui.pages
 
 import android.content.res.Configuration
 import android.util.Log
-import androidx.compose.animation.animateContentSize
-import androidx.compose.foundation.gestures.detectTransformGestures
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.Image
@@ -28,20 +26,15 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Slider
-import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
@@ -58,16 +51,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.SubcomposeLayout
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -76,7 +66,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -97,70 +86,129 @@ val LocalBaseFontSize = compositionLocalOf { 12f }
 val LocalHighlightRange = compositionLocalOf<Pair<Int, Int>?> { null }
 val LocalFullText = compositionLocalOf { "" }
 
-// Helper function to extract plain text from notes for TTS
-fun extractTextFromNotes(notes: List<NoteItem>): String {
-    return buildString {
+// NEW: Data class to represent text segments with precise positions
+data class TextSegment(
+    val originalText: String,
+    val cleanedText: String,
+    val startPos: Int,
+    val endPos: Int,
+    val noteItem: NoteItem // Keep original item for rendering
+)
+
+// Helper to remove emojis but keep all text content
+fun cleanTextFromEmojis(text: String): String {
+    // Remove emojis while preserving all regular text
+    return text
+        // Remove emoji ranges (comprehensive Unicode emoji blocks)
+        .replace(Regex("[\uD83C-\uDBFF\uDC00-\uDFFF]"), "")
+        .replace(Regex("[\u2600-\u27BF]"), "") // Misc symbols
+        .replace(Regex("[\uE000-\uF8FF]"), "") // Private use area
+        .replace(Regex("[\u2011-\u26FF]"), "") // Dingbats, arrows, etc.
+        .replace(Regex("[\uFE0E-\uFE0F]"), "") // Variation selectors
+        // Keep everything else: letters, numbers, punctuation, spaces
+        .replace(Regex("\\s+"), " ") // Normalize multiple spaces
+        .trim()
+}
+
+// NEW: Extracts text and creates a map of segments with their exact positions
+fun extractTextFromNotesWithPositions(notes: List<NoteItem>): Pair<String, List<TextSegment>> {
+    val segments = mutableListOf<TextSegment>()
+    var currentPos = 0
+    val fullText = buildString {
         notes.forEach { item ->
+            val textProvider: String
             when (item) {
-                is NoteItem.TopicName -> append(item.text).append(". ")
-                is NoteItem.Heading -> append(item.text).append(". ")
-                is NoteItem.Paragraph -> append(item.text).append(". ")
+                is NoteItem.TopicName -> textProvider = item.text
+                is NoteItem.Heading -> textProvider = item.text
+                is NoteItem.Paragraph -> textProvider = item.text
                 is NoteItem.Bullet -> {
-                    append(item.text).append(". ")
+                    textProvider = item.text
+                    // Handle sub-bullets as separate segments
                     item.subBullets.forEach { subBullet ->
-                        append(subBullet).append(". ")
+                        val cleanedSub = cleanTextFromEmojis(subBullet)
+                        if (cleanedSub.isNotEmpty()) {
+                            var textToAppend = cleanedSub
+                            if (!textToAppend.endsWith(".") && !textToAppend.endsWith("?") && !textToAppend.endsWith("!")) {
+                                textToAppend += "."
+                            }
+                            textToAppend += " "
+                            // Create a new NoteItem for the sub-bullet to render it correctly
+                            val subBulletItem = NoteItem.Bullet(text = subBullet, subBullets = emptyList())
+                            segments.add(TextSegment(subBullet, cleanedSub, currentPos, currentPos + textToAppend.length, subBulletItem))
+                            append(textToAppend)
+                            currentPos += textToAppend.length
+                        }
                     }
                 }
-                is NoteItem.Image -> {} // Skip images
+                is NoteItem.Image -> {
+                    // Add a segment for the image so it's included in the layout
+                    segments.add(TextSegment("", "", currentPos, currentPos, item))
+                    textProvider = ""
+                }
+            }
+
+            if (textProvider.isNotEmpty()) {
+                val cleaned = cleanTextFromEmojis(textProvider)
+                if (cleaned.isNotEmpty()) {
+                    var textToAppend = cleaned
+                    if (!textToAppend.endsWith(".") && !textToAppend.endsWith("?") && !textToAppend.endsWith("!")) {
+                        textToAppend += "."
+                    }
+                    textToAppend += " "
+                    segments.add(TextSegment(textProvider, cleaned, currentPos, currentPos + textToAppend.length, item))
+                    append(textToAppend)
+                    currentPos += textToAppend.length
+                }
             }
         }
     }
+    return fullText to segments
 }
 
 // Highlighted Text Composable for TTS word highlighting
-@Composable
-fun HighlightedText(
-    text: String,
-    highlightRange: Pair<Int, Int>?,
-    style: TextStyle,
-    modifier: Modifier = Modifier
-) {
-    val annotatedString = remember(text, highlightRange) {
-        buildAnnotatedString {
-            if (highlightRange != null &&
-                highlightRange.first >= 0 &&
-                highlightRange.first < text.length &&
-                highlightRange.second > highlightRange.first &&
-                highlightRange.second <= text.length) {
-                // Before highlight
-                append(text.substring(0, highlightRange.first))
-
-                // Highlighted portion
-                withStyle(
-                    SpanStyle(
-                        background = Color(0xFFFFEB3B), // Yellow highlight
-                        color = Color(0xFF2D3436)
-                    )
-                ) {
-                    append(text.substring(highlightRange.first, highlightRange.second))
-                }
-
-                // After highlight
-                if (highlightRange.second < text.length) {
-                    append(text.substring(highlightRange.second))
-                }
-            } else {
-                append(text)
-            }
-        }
-    }
-
-    Text(
-        text = annotatedString,
-        style = style,
-        modifier = modifier
-    )
-}
+//@Composable
+//fun HighlightedText(
+//    text: String,
+//    highlightRange: Pair<Int, Int>?,
+//    style: TextStyle,
+//    modifier: Modifier = Modifier
+//) {
+//    val annotatedString = remember(text, highlightRange) {
+//        buildAnnotatedString {
+//            if (highlightRange != null &&
+//                highlightRange.first >= 0 &&
+//                highlightRange.first < text.length &&
+//                highlightRange.second > highlightRange.first &&
+//                highlightRange.second <= text.length) {
+//                // Before highlight
+//                append(text.substring(0, highlightRange.first))
+//
+//                // Highlighted portion
+//                withStyle(
+//                    SpanStyle(
+//                        background = Color(0xFFFFEB3B), // Yellow highlight
+//                        color = Color(0xFF2D3436)
+//                    )
+//                ) {
+//                    append(text.substring(highlightRange.first, highlightRange.second))
+//                }
+//
+//                // After highlight
+//                if (highlightRange.second < text.length) {
+//                    append(text.substring(highlightRange.second))
+//                }
+//            } else {
+//                append(text)
+//            }
+//        }
+//    }
+//
+//    Text(
+//        text = annotatedString,
+//        style = style,
+//        modifier = modifier
+//    )
+//}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -185,32 +233,93 @@ fun NotesScreen(
     var isNavigationVisible by remember { mutableStateOf(true) }
     var lastScrollPosition by remember { mutableIntStateOf(0) }
 
-    // TTS State
+    // --- TTS State Refactor ---
     var currentHighlightRange by remember { mutableStateOf<Pair<Int, Int>?>(null) }
     var isTTSPlaying by remember { mutableStateOf(false) }
-    var speechRate by remember { mutableStateOf(0.9f) }
+    var isTTSPaused by remember { mutableStateOf(false) }
+    var speechRate by remember { mutableStateOf(0.8f) }
     var fullNoteText by remember { mutableStateOf("") }
+    var textSegments by remember { mutableStateOf<List<TextSegment>>(emptyList()) }
 
-    // TTS Manager
+    // Anchor and Offset state
+    var playbackChunkOffset by remember { mutableIntStateOf(0) }
+    var lastWordStartIndex by remember { mutableIntStateOf(0) }
+
+    var showTTSControls by remember { mutableStateOf(false) }
+
+    // TTS Manager with position tracking
     val ttsManager = rememberTextToSpeechManager(
-        onWordSpoken = { word, start, end ->
-            currentHighlightRange = Pair(start, end)
-            Log.d("NotesScreen", "Highlighting word: '$word' at [$start, $end]")
+        onWordSpoken = { _, start, end ->
+            // Use the offset to calculate the global position
+            val globalStart = start + playbackChunkOffset
+            val globalEnd = end + playbackChunkOffset
+            currentHighlightRange = Pair(globalStart, globalEnd)
+            // Track the start of the last spoken word for accurate resume
+            lastWordStartIndex = globalStart
+            Log.d("NotesScreen", "Word spoken at global range: [$globalStart, $globalEnd]")
         },
         onComplete = {
             isTTSPlaying = false
+            isTTSPaused = false
             currentHighlightRange = null
+            lastWordStartIndex = 0
+            playbackChunkOffset = 0
             Log.d("NotesScreen", "TTS completed")
         }
     )
 
-    LaunchedEffect(jsonFileName) {
-        viewModel.loadChapter(context, jsonFileName)
+    // Unified function to play, resume, or change speed
+    fun playOrResumeTTS(fromIndex: Int = 0, rate: Float = speechRate) {
+        ttsManager.stop() // Always stop before starting
+        ttsManager.setSpeechRate(rate)
+
+        if (fromIndex < fullNoteText.length) {
+            val textToSpeak = fullNoteText.substring(fromIndex)
+            playbackChunkOffset = fromIndex // Set the anchor
+            ttsManager.speak(textToSpeak)
+            isTTSPlaying = true
+            isTTSPaused = false
+            showTTSControls = true
+        } else {
+            // Reached the end of the text
+            isTTSPlaying = false
+            isTTSPaused = false
+            showTTSControls = false
+        }
     }
 
-    // Extract full text from notes when loaded
+    // Reset TTS when topic changes
+    LaunchedEffect(currentIndex) {
+        if (isTTSPlaying || isTTSPaused) {
+            Log.d("NotesScreen", "Topic changed - resetting TTS")
+            ttsManager.stop()
+            isTTSPlaying = false
+            isTTSPaused = false
+            currentHighlightRange = null
+            lastWordStartIndex = 0
+            playbackChunkOffset = 0
+            showTTSControls = false
+        }
+    }
+
+    LaunchedEffect(jsonFileName) {
+        viewModel.loadChapter(context, jsonFileName)
+        // Reset TTS on chapter change
+        Log.d("NotesScreen", "Chapter changed - resetting TTS")
+        ttsManager.stop()
+        isTTSPlaying = false
+        isTTSPaused = false
+        currentHighlightRange = null
+        lastWordStartIndex = 0
+        playbackChunkOffset = 0
+        showTTSControls = false
+    }
+
+    // Extract full text and segments when notes load
     LaunchedEffect(uiState.currentNotes) {
-        fullNoteText = extractTextFromNotes(uiState.currentNotes)
+        val (text, segments) = extractTextFromNotesWithPositions(uiState.currentNotes)
+        fullNoteText = text
+        textSegments = segments
     }
 
     // Detect scroll direction
@@ -249,24 +358,18 @@ fun NotesScreen(
                 .fillMaxSize()
                 .background(Color(0xFFF5F7FA)),
             floatingActionButton = {
-                // Always visible Play/Pause FAB
-                if (!isLandscape) {
+                // Enhanced Play/Pause/Resume FAB
+                if (!isTTSPlaying &&   !isTTSPaused) {
                     androidx.compose.material3.FloatingActionButton(
                         onClick = {
-                            if (isTTSPlaying) {
-                                ttsManager.stop()
-                                isTTSPlaying = false
-                            } else {
-                                ttsManager.speak(fullNoteText)
-                                isTTSPlaying = true
-                            }
+                            playOrResumeTTS(fromIndex = 0)
                         },
-                        containerColor = if (isTTSPlaying) Color(0xFFFF6B6B) else Color(0xFF6C63FF),
+                        containerColor = Color(0xFF6C63FF), // Purple for start
                         modifier = Modifier.padding(bottom = if (isNavigationVisible) 80.dp else 16.dp)
                     ) {
-                        androidx.compose.material3.Icon(
-                            imageVector = if (isTTSPlaying) androidx.compose.material.icons.Icons.Default.Stop else androidx.compose.material.icons.Icons.Default.PlayArrow,
-                            contentDescription = if (isTTSPlaying) "Stop Reading" else "Start Reading",
+                        Icon(
+                            imageVector = Icons.Default.PlayArrow,
+                            contentDescription = "Start Reading",
                             tint = Color.White
                         )
                     }
@@ -274,9 +377,9 @@ fun NotesScreen(
             },
             bottomBar = {
                 Column {
-                    // TTS Controls (show when playing for speed control)
+                    // TTS Controls (show when playing OR paused)
                     androidx.compose.animation.AnimatedVisibility(
-                        visible = isTTSPlaying,
+                        visible = showTTSControls,
                         enter = androidx.compose.animation.slideInVertically(
                             initialOffsetY = { it },
                             animationSpec = androidx.compose.animation.core.tween(300)
@@ -288,24 +391,48 @@ fun NotesScreen(
                     ) {
                         TTSFloatingControls(
                             isPlaying = isTTSPlaying,
+                            isPaused = isTTSPaused,
                             onPlayPause = {
-                                if (isTTSPlaying) {
-                                    ttsManager.stop()
-                                    isTTSPlaying = false
-                                } else {
-                                    ttsManager.speak(fullNoteText)
-                                    isTTSPlaying = true
+                                when {
+                                    isTTSPlaying -> { // User wants to PAUSE
+                                        Log.d("NotesScreen", "Pausing at position: $lastWordStartIndex")
+                                        ttsManager.stop()
+                                        isTTSPlaying = false
+                                        isTTSPaused = true
+                                    }
+                                    isTTSPaused -> { // User wants to RESUME
+                                        Log.d("NotesScreen", "Resuming from position: $lastWordStartIndex")
+                                        playOrResumeTTS(fromIndex = lastWordStartIndex)
+                                    }
+                                    else -> { // User wants to PLAY from start
+                                        Log.d("NotesScreen", "Starting TTS from beginning")
+                                        playOrResumeTTS(fromIndex = 0)
+                                    }
                                 }
                             },
                             onStop = {
+                                // STOP - reset everything
+                                Log.d("NotesScreen", "Stop button clicked")
                                 ttsManager.stop()
                                 isTTSPlaying = false
+                                isTTSPaused = false
                                 currentHighlightRange = null
+                                lastWordStartIndex = 0
+                                playbackChunkOffset = 0
+                                showTTSControls = false
                             },
                             speechRate = speechRate,
                             onSpeechRateChange = { rate ->
                                 speechRate = rate
-                                ttsManager.setSpeechRate(rate)
+                                Log.d("NotesScreen", "Speech rate changed to: $rate")
+
+                                // If playing, restart from the last word with the new speed
+                                if (isTTSPlaying) {
+                                    playOrResumeTTS(fromIndex = lastWordStartIndex, rate = rate)
+                                } else {
+                                    // If paused, just update the rate for the next play action
+                                    ttsManager.setSpeechRate(rate)
+                                }
                             }
                         )
                     }
@@ -339,9 +466,7 @@ fun NotesScreen(
                 }
             },
             topBar = {
-                if (!isLandscape) {
-                    // No TopAppBar - we'll use a custom header instead
-                }
+                // No TopAppBar for landscape, handled by custom header
             }
         ) { paddingValues ->
             Column(
@@ -353,7 +478,8 @@ fun NotesScreen(
                 if (!isLandscape) {
                     NotesScreenHeader(
                         chapterTitle = uiState.chapterTitle,
-                        onSettingsClick = { showSettingsDialog = true }
+                        onSettingsClick = { showSettingsDialog = true },
+                        onBackClick = { navController.popBackStack() }
                     )
                 }
 
@@ -361,17 +487,14 @@ fun NotesScreen(
                     modifier = Modifier.fillMaxSize()
                 ) {
                     PaginatedNotes(
-                        notes = uiState.currentNotes,
+                        segments = textSegments,
                         background = R.drawable.page_bg,
                         screenHeight = screenHeight,
                         modifier = Modifier.weight(1f),
-                        onImageClick = {
-                            viewingImageResId = it
-                        },
-                        scrollState = scrollState,
-                        highlightRange = currentHighlightRange,
-                        fullNoteText = fullNoteText
+                        onImageClick = { viewingImageResId = it },
+                        scrollState = scrollState
                     )
+
 
 
                     if (isLandscape) {
@@ -398,7 +521,7 @@ fun NotesScreen(
 
 // Compact Header for Notes Screen (Shorter height)
 @Composable
-fun NotesScreenHeader(chapterTitle: String, onSettingsClick: () -> Unit) {
+fun NotesScreenHeader(chapterTitle: String, onSettingsClick: () -> Unit, onBackClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -435,8 +558,24 @@ fun NotesScreenHeader(chapterTitle: String, onSettingsClick: () -> Unit) {
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Back button (LEFT)
+            IconButton(
+                onClick = onBackClick,
+                modifier = Modifier
+                    .size(40.dp)
+                    .background(Color.White.copy(alpha = 0.2f), CircleShape)
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Back",
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+
+            // Title (CENTER)
             Column(
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(1f).padding(horizontal = 12.dp)
             ) {
                 Text(
                     text = "STUDY NOTES",
@@ -459,8 +598,8 @@ fun NotesScreenHeader(chapterTitle: String, onSettingsClick: () -> Unit) {
                     maxLines = 1
                 )
             }
-            
-            // Settings button
+
+            // Settings button (RIGHT)
             IconButton(
                 onClick = onSettingsClick,
                 modifier = Modifier
@@ -634,116 +773,6 @@ fun VerticalSidebar(
     }
 }
 
-
-//fun loadNotes(index: Int): List<NoteItem> {
-//    return if (index == 1) listOf(
-//        NoteItem.TopicName("🌱 Topic: 5.2.1 Autotrophic Nutrition"),
-//        NoteItem.Heading("🌞 What is Photosynthesis?"),
-//        NoteItem.Paragraph("Photosynthesis is the process where autotrophs take simple things from the outside world and turn them into stored energy (food!)."),
-//        NoteItem.Heading("🧪 The Ingredients for Photosynthesis"),
-//        NoteItem.Paragraph("Plants take in two main things from the environment:"),
-//        NoteItem.Bullet("Carbon Dioxide (CO₂) – from the air we breathe out"),
-//        NoteItem.Bullet("Water (H₂O) – from the soil"),
-//        NoteItem.Paragraph("In the presence of Sunlight ☀️ and Chlorophyll (the green stuff in leaves), these ingredients are converted into carbohydrates."),
-//        NoteItem.Paragraph("🍞 Carbohydrates: This is the plant’s food! Like roti or rice for the plant."),
-//        NoteItem.Heading("🍱 What Happens to the Food (Carbohydrates)?"),
-//        NoteItem.Bullet("Used by the plant for energy"),
-//        NoteItem.Bullet("Extra food is stored as starch"),
-//        NoteItem.Bullet("🌟 Starch: Backup food supply; internal energy reserve"),
-//        NoteItem.Heading("💡 Did you know?"),
-//        NoteItem.Bullet("Humans also store energy as glycogen"),
-//        NoteItem.Bullet("Plant’s stored food = Starch"),
-//        NoteItem.Bullet("Human’s stored food = Glycogen"),
-//        NoteItem.Heading("🧬 The Photosynthesis Chemical Equation"),
-//        NoteItem.Paragraph("6CO₂ + 12H₂O → C₆H₁₂O₆ + 6O₂ + 6H₂O (In presence of Chlorophyll and Sunlight)"),
-//        NoteItem.Paragraph("Let’s break this down:"),
-//        NoteItem.Bullet("6CO₂: Six Carbon Dioxide molecules"),
-//        NoteItem.Bullet("12H₂O: Twelve Water molecules"),
-//        NoteItem.Bullet("C₆H₁₂O₆: Glucose (plant’s food!), a type of carbohydrate 🍽️"),
-//        NoteItem.Bullet("6O₂: Oxygen released as a by-product 🌬️"),
-//        NoteItem.Bullet("6H₂O: Additional Water formed"),
-//        NoteItem.Heading("🔁 The 3 Main Events of Photosynthesis"),
-//        NoteItem.Bullet(
-//            "Absorption of Light Energy by Chlorophyll",
-//            listOf("Chlorophyll absorbs sunlight 🌞 like a tiny solar panel 🔋")
-//        ),
-//        NoteItem.Bullet(
-//            "Conversion of Light Energy to Chemical Energy & Splitting of Water",
-//            listOf(
-//                "Light energy turns into chemical energy",
-//                "Water (H₂O) is split into Hydrogen (H) and Oxygen (O) 💧 ➡️ H + O"
-//            )
-//        ),
-//        NoteItem.Bullet(
-//            "Reduction of Carbon Dioxide to Carbohydrates",
-//            listOf("CO₂ combines with Hydrogen to form glucose (a carbohydrate)")
-//        ),
-//        NoteItem.Heading("🌵 Do These Steps Always Happen One After Another?"),
-//        NoteItem.Bullet("Not always!"),
-//        NoteItem.Bullet(
-//            "Desert plants are smart:",
-//            listOf(
-//                "Take in CO₂ at night to save water 🌙",
-//                "Make an intermediate compound",
-//                "Use sunlight during the day to make food ☀️"
-//            )
-//        ),
-//        NoteItem.Heading("🔬 Where Does Photosynthesis Happen?"),
-//        NoteItem.Image(R.drawable.photosynthesis_diagram),
-//        NoteItem.Bullet("Look at a leaf cross-section under a microscope 🔍"),
-//        NoteItem.Bullet("You’ll see green dots = chloroplasts"),
-//        NoteItem.Bullet("Chloroplasts contain chlorophyll"),
-//        NoteItem.Bullet("So, chloroplast = kitchen of the cell 👩‍🍳")
-//    )
-//    else listOf(
-//        NoteItem.TopicName("🌿 Topic: How Plants Get Their Raw Materials 🚚"),
-//
-//        NoteItem.Heading("💨 Getting Carbon Dioxide (CO₂)"),
-//        NoteItem.Bullet("Plants get carbon dioxide from the air through tiny pores on the surface of leaves called stomata."),
-//        NoteItem.Bullet("🕳️ Stomata (singular: stoma): Like tiny \"mouths\" on the leaf for gas exchange."),
-//        NoteItem.Bullet("🌬️ A massive amount of gas exchange takes place through these stomata during photosynthesis."),
-//        NoteItem.Paragraph("🔍 Note:\nGas exchange also happens across the surface of stems and roots."),
-//
-//        NoteItem.Heading("💧 The Problem of Water Loss"),
-//        NoteItem.Bullet("While stomata allow CO₂ in, they can also cause water loss."),
-//        NoteItem.Bullet("🌵 To avoid losing too much water, the plant closes the stomata when CO₂ isn't needed."),
-//
-//        NoteItem.Heading("💂 The Gatekeepers: Guard Cells"),
-//        NoteItem.Bullet("Opening and closing of stomata is regulated by guard cells."),
-//        NoteItem.Bullet("🫘 Guard Cells: Two bean-shaped cells around each stoma that act like gatekeepers."),
-//        NoteItem.Paragraph("🔄 How It Works:"),
-//        NoteItem.Bullet(
-//            "When water enters the guard cells:",
-//            listOf("They swell and curve outward ➡️ Stomata opens")
-//        ),
-//        NoteItem.Bullet(
-//            "When water is lost from the guard cells:",
-//            listOf("They shrink and straighten ➡️ Stomata closes")
-//        ),
-//
-//        NoteItem.Heading("🌱 Getting Water and Other Raw Materials from the Soil"),
-//        NoteItem.Paragraph("Plants need more than just CO₂—they also need water and minerals."),
-//        NoteItem.Bullet("🚿 Water (H₂O):"),
-//        NoteItem.Bullet("Terrestrial plants absorb water from the soil through their roots"),
-//
-//        NoteItem.Bullet("🧪 Other Essential Minerals:"),
-//        NoteItem.Bullet("📌 Nitrogen"),
-//        NoteItem.Bullet("📌 Phosphorus"),
-//        NoteItem.Bullet("📌 Iron"),
-//        NoteItem.Bullet("📌 Magnesium"),
-//        NoteItem.Paragraph("These are also taken up through the roots."),
-//
-//        NoteItem.Heading("⭐ The Importance of Nitrogen"),
-//        NoteItem.Bullet("Nitrogen is an essential nutrient used to build proteins and important plant compounds."),
-//        NoteItem.Paragraph("🧬 How Plants Get Nitrogen:"),
-//        NoteItem.Bullet("From inorganic forms in soil (like nitrates or nitrites)"),
-//        NoteItem.Bullet(
-//            "From organic compounds made by special bacteria 🦠",
-//            listOf("These bacteria fix nitrogen from the atmosphere into a usable form for plants")
-//        )
-//    )
-//}
-
 val kalamFont = FontFamily(Font(R.font.hand_written))
 
 // Handwritten ink colors - multiple shades for authenticity
@@ -751,7 +780,6 @@ val headingColor = Color(0xFF0D47A1)  // Slightly darker blue for headings
 val bodyColor = Color(0xFF1565C0)     // Main ink blue
 val bodyColorVariant1 = Color(0xFF1976D2)  // Slightly lighter for variation
 val bodyColorVariant2 = Color(0xFF0D47A1)  // Slightly darker for variation
-val bulletColor = Color(0xFF1565C0)   // Bullet point color
 
 // Random-ish rotation values to make text look handwritten (very subtle)
 val textRotations = listOf(0f, 0.3f, -0.2f, 0.4f, -0.3f, 0.2f, -0.4f, 0.5f)
@@ -779,55 +807,58 @@ fun BottomPageNavigator(
             )
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        // Topic indicator with beautiful chips
+        // Topic name on LEFT, Topic indicator on RIGHT
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 6.dp),
-            horizontalArrangement = Arrangement.Center,
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
+            // Topic name (LEFT side)
             Text(
-                text = "Topic",
-                fontSize = 10.sp,
-                fontWeight = FontWeight.Medium,
-                color = Color(0xFF6C63FF).copy(alpha = 0.7f),
-                letterSpacing = 1.sp
+                text = currentTopicName,
+                fontWeight = FontWeight.SemiBold,
+                color = Color(0xFF2D3436),
+                fontSize = 13.sp,
+                modifier = Modifier.weight(1f).padding(end = 8.dp),
+                maxLines = 1
             )
-            Spacer(modifier = Modifier.width(6.dp))
 
-            // Current topic chip
-            Box(
-                modifier = Modifier
-                    .background(
-                        brush = Brush.horizontalGradient(
-                            colors = listOf(Color(0xFF6C63FF), Color(0xFF8E84FF))
-                        ),
-                        shape = RoundedCornerShape(10.dp)
-                    )
-                    .padding(horizontal = 10.dp, vertical = 4.dp)
+            // Topic indicator (RIGHT side)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.End
             ) {
                 Text(
-                    text = "${currentIndex + 1} / $totalTopics",
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    text = "Topic",
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color(0xFF6C63FF).copy(alpha = 0.7f),
+                    letterSpacing = 1.sp
                 )
+                Spacer(modifier = Modifier.width(6.dp))
+
+                // Current topic chip
+                Box(
+                    modifier = Modifier
+                        .background(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(Color(0xFF6C63FF), Color(0xFF8E84FF))
+                            ),
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(horizontal = 10.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = "${currentIndex + 1}/$totalTopics",
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
             }
         }
-
-        // Topic name with elegant styling
-        Text(
-            text = currentTopicName,
-            fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF2D3436),
-            fontSize = 13.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 4.dp),
-            maxLines = 1
-        )
 
         // Beautiful navigation buttons
         Row(
@@ -890,8 +921,7 @@ fun BottomPageNavigator(
                             .clickable {
                                 onValueChange(actualIndex)
                                 onFinalValue()
-                            }
-                    )
+                            })
                 }
             }
 
@@ -923,181 +953,136 @@ fun BottomPageNavigator(
 }
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LabeledSlider(
-    currentIndex: Int,
-    totalTopics: Int,
-    onValueChange: (Int) -> Unit,
-    onFinalValue: () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-    ) {
-
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Slider(
-                value = currentIndex.toFloat(),
-                onValueChange = {
-                    onValueChange(it.toInt())
-                },
-                onValueChangeFinished = {
-                    onFinalValue.invoke()
-                },
-                valueRange = 0f..(totalTopics - 1).toFloat(),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp),
-                colors = SliderDefaults.colors(
-                    thumbColor = Color(0xFF1F1F1F),
-                    activeTrackColor = Color(0xFFAAAAAA),
-                    inactiveTrackColor = Color(0xFFE0E0E0)
-                ),
-                thumb = {
-                    Box(
-                        modifier = Modifier
-                            .size(28.dp) // Increased size to fit the number
-                            .background(Color(0xFF1F1F1F), shape = CircleShape)
-                            .clip(CircleShape),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "${currentIndex + 1}",
-                            color = Color.White,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Bold,
-                        )
-                    }
-                },
-                track = {
-                    Box(
-                        Modifier
-                            .fillMaxWidth()
-                            .height(2.dp)
-                            .background(Color(0xFFE0E0E0), shape = RoundedCornerShape(50))
-                    )
-                }
-            )
-        }
-    }
-}
-
-
-@Composable
-fun Bullet(text: String, subBullets: List<String> = emptyList()) {
+fun Bullet(segment: TextSegment) {
     val baseSize = LocalBaseFontSize.current
     val highlightRange = LocalHighlightRange.current
-    val fullText = LocalFullText.current
-    val rotation = textRotations[text.hashCode().absoluteValue % textRotations.size]
-    val inkColor = if (text.hashCode() % 3 == 0) bodyColorVariant1 else bodyColor
+    val rotation = textRotations[segment.originalText.hashCode().absoluteValue % textRotations.size]
+    val inkColor = if (segment.originalText.hashCode() % 3 == 0) bodyColorVariant1 else bodyColor
 
     // Check if this text contains highlighted portion
-    val startInFull = fullText.indexOf(text)
-    val shouldHighlight = highlightRange != null && startInFull >= 0 &&
-                         highlightRange.first >= startInFull &&
-                         highlightRange.first < startInFull + text.length
+    val shouldHighlight = highlightRange != null &&
+            highlightRange.first >= segment.startPos &&
+            highlightRange.first < segment.endPos
 
-    Column(modifier = Modifier.padding(start = 19.dp, bottom = 0.dp)) {
-        if (shouldHighlight && highlightRange != null) {
-            val localStart = (highlightRange.first - startInFull).coerceAtLeast(0)
-            val localEnd = (highlightRange.second - startInFull).coerceAtMost(text.length)
+    if (shouldHighlight) {
+        val localStart = (highlightRange.first - segment.startPos).coerceAtLeast(0)
+        val localEnd = (highlightRange.second - segment.startPos).coerceAtMost(segment.cleanedText.length)
 
-            if (localStart >= 0 && localStart < localEnd && localEnd <= text.length) {
-                val annotatedText = buildAnnotatedString {
-                    append("•  ")
-                    if (localStart > 0) {
-                        append(text.substring(0, localStart))
-                    }
-                    withStyle(SpanStyle(background = Color(0xFFFFEB3B), color = Color(0xFF2D3436))) {
-                        append(text.substring(localStart, localEnd))
-                    }
-                    if (localEnd < text.length) {
-                        append(text.substring(localEnd))
-                    }
+        if (localStart >= 0 && localStart < localEnd && localEnd <= segment.cleanedText.length) {
+            val annotatedText = buildAnnotatedString {
+                append("•  ")
+                if (localStart > 0) {
+                    append(segment.cleanedText.substring(0, localStart))
                 }
-
-                Text(
-                    text = annotatedText,
-                    style = TextStyle(
-                        fontFamily = kalamFont,
-                        fontSize = (baseSize + 1).sp,
-                        lineHeight = (baseSize + 2).sp,
-                        color = inkColor
-                    ),
-                    modifier = Modifier
-                        .padding(vertical = 1.dp)
-                        .graphicsLayer { rotationZ = rotation * 0.3f }
-                )
-
-                // Sub-bullets
-                if (subBullets.isNotEmpty()) {
-                    Column(modifier = Modifier.padding(start = 34.dp, top = 2.dp)) {
-                        subBullets.forEachIndexed { index, sub ->
-                            val subRotation = textRotations[(sub.hashCode() + index).absoluteValue % textRotations.size]
-                            val subInkColor = if (index % 2 == 0) bodyColorVariant2 else bodyColorVariant1
-                            Row(modifier = Modifier.padding(bottom = 0.dp)) {
-                                Text(
-                                    "◦ $sub",
-                                    style = TextStyle(
-                                        fontFamily = kalamFont,
-                                        fontSize = baseSize.sp,
-                                        lineHeight = (baseSize + 1).sp,
-                                        color = subInkColor
-                                    ),
-                                    modifier = Modifier.graphicsLayer { rotationZ = subRotation * 0.25f }
-                                )
-                            }
-                        }
-                    }
+                withStyle(SpanStyle(background = Color(0xFFFF9800), color = Color.Black)) {
+                    append(segment.cleanedText.substring(localStart, localEnd))
                 }
-                return
-            }
-        }
-
-        // Normal bullet without highlighting
-        Text(
-            "•  $text",
-            style = TextStyle(
-                fontFamily = kalamFont,
-                fontSize = (baseSize + 1).sp,
-                lineHeight = (baseSize + 2).sp,
-                color = inkColor
-            ),
-            modifier = Modifier
-                .padding(vertical = 1.dp)
-                .graphicsLayer {
-                    rotationZ = rotation * 0.3f
-                }
-        )
-
-        if (subBullets.isNotEmpty()) {
-            Column(modifier = Modifier.padding(start = 34.dp, top = 2.dp)) {
-                subBullets.forEachIndexed { index, sub ->
-                    val subRotation = textRotations[(sub.hashCode() + index).absoluteValue % textRotations.size]
-                    val subInkColor = if (index % 2 == 0) bodyColorVariant2 else bodyColorVariant1
-
-                    Row(modifier = Modifier.padding(bottom = 0.dp)) {
-                        Text(
-                            "◦ $sub",
-                            style = TextStyle(
-                                fontFamily = kalamFont,
-                                fontSize = baseSize.sp,
-                                lineHeight = (baseSize + 1).sp,
-                                color = subInkColor
-                            ),
-                            modifier = Modifier
-                                .graphicsLayer {
-                                    rotationZ = subRotation * 0.25f
-                                }
-                        )
-                    }
+                if (localEnd < segment.cleanedText.length) {
+                    append(segment.cleanedText.substring(localEnd))
                 }
             }
+
+            Text(
+                text = annotatedText,
+                style = TextStyle(
+                    fontFamily = kalamFont,
+                    fontSize = (baseSize + 1).sp,
+                    lineHeight = (baseSize + 2).sp,
+                    color = inkColor
+                ),
+                modifier = Modifier
+                    .padding(start = 19.dp, top = 1.dp, bottom = 1.dp)
+                    .graphicsLayer { rotationZ = rotation * 0.3f }
+            )
+            return
         }
     }
+
+    // Normal bullet without highlighting
+    Text(
+        "•  ${segment.cleanedText}",
+        style = TextStyle(
+            fontFamily = kalamFont,
+            fontSize = (baseSize + 1).sp,
+            lineHeight = (baseSize + 2).sp,
+            color = inkColor
+        ),
+        modifier = Modifier
+            .padding(start = 19.dp, top = 1.dp, bottom = 1.dp)
+            .graphicsLayer {
+                rotationZ = rotation * 0.3f
+            }
+    )
 }
+
+
+@Composable
+fun SubBullet(segment: TextSegment) {
+    val baseSize = LocalBaseFontSize.current
+    val highlightRange = LocalHighlightRange.current
+    val rotation =
+        textRotations[segment.originalText.hashCode().absoluteValue % textRotations.size]
+    val inkColor =
+        if (segment.originalText.hashCode() % 2 == 0) bodyColorVariant2 else bodyColorVariant1
+
+    val shouldHighlight = highlightRange != null &&
+            highlightRange.first >= segment.startPos &&
+            highlightRange.first < segment.endPos
+
+    if (shouldHighlight) {
+        val localStart = (highlightRange.first - segment.startPos).coerceAtLeast(0)
+        val localEnd =
+            (highlightRange.second - segment.startPos).coerceAtMost(segment.cleanedText.length)
+
+        if (localStart >= 0 && localStart < localEnd && localEnd <= segment.cleanedText.length) {
+            val annotatedText = buildAnnotatedString {
+                append("◦ ")
+                if (localStart > 0) {
+                    append(segment.cleanedText.substring(0, localStart))
+                }
+                withStyle(
+                    SpanStyle(
+                        background = Color(0xFFFF9800), // bright orange
+                        color = Color.Black
+                    )
+                ) {
+                    append(segment.cleanedText.substring(localStart, localEnd))
+                }
+                if (localEnd < segment.cleanedText.length) {
+                    append(segment.cleanedText.substring(localEnd))
+                }
+            }
+            Text(
+                text = annotatedText,
+                style = TextStyle(
+                    fontFamily = kalamFont,
+                    fontSize = baseSize.sp,
+                    lineHeight = (baseSize + 1).sp,
+                    color = inkColor
+                ),
+                modifier = Modifier
+                    .padding(start = 34.dp, bottom = 0.dp)
+                    .graphicsLayer { rotationZ = rotation * 0.25f }
+            )
+            return
+        }
+    }
+
+    Text(
+        text = "◦ ${segment.cleanedText}",
+        style = TextStyle(
+            fontFamily = kalamFont,
+            fontSize = baseSize.sp,
+            lineHeight = (baseSize + 1).sp,
+            color = inkColor
+        ),
+        modifier = Modifier
+            .padding(start = 34.dp, bottom = 0.dp)
+            .graphicsLayer { rotationZ = rotation * 0.25f }
+    )
+}
+
 
 
 @Composable
@@ -1140,24 +1125,21 @@ fun NoteImage(resId: Int, height: Dp = 140.dp, onImageClick: () -> Unit = {}) {
                 .padding(4.dp) // Create white border effect
                 .clickable(true) {
                     onImageClick.invoke()
-                }
-        )
+                })
     }
 }
 
 
 @Composable
 fun PaginatedNotes(
-    notes: List<NoteItem>,
+    segments: List<TextSegment>, // Changed from notes
     background: Int,
     screenHeight: Dp,
     horizontalPadding: Dp = 12.dp,
     verticalPadding: Dp = 16.dp,
     modifier: Modifier = Modifier,
     onImageClick: (Int) -> Unit = { _ -> },
-    scrollState: androidx.compose.foundation.ScrollState,
-    highlightRange: Pair<Int, Int>? = null,
-    fullNoteText: String = ""
+    scrollState: androidx.compose.foundation.ScrollState
 ) {
 
     // Zoom state
@@ -1178,7 +1160,7 @@ fun PaginatedNotes(
         }
     }
 
-    LaunchedEffect(notes) {
+    LaunchedEffect(segments) { // Changed from notes
         scrollState.animateScrollTo(0)
         // Reset zoom when notes change
         scale = 1f
@@ -1213,22 +1195,21 @@ fun PaginatedNotes(
                 )
             }
         ) {
-            notes.forEach { item ->
-                when (item) {
+            // Render notes from segments
+            segments.forEach { segment ->
+                when (val item = segment.noteItem) {
                     is NoteItem.TopicName -> NoteTitleText(item.text)
-                    is NoteItem.Image -> NoteImage(
-                        item.resId, item.height.dp, onImageClick = {
-                            onImageClick(item.resId)
-                        })
-
-                    is NoteItem.Heading -> NoteText(
-                        item.text,
-                        isHeading = true,
-                    )
-
-                    is NoteItem.Paragraph -> NoteText(item.text)
-
-                    is NoteItem.Bullet -> Bullet(item.text, item.subBullets)
+                    is NoteItem.Heading -> NoteText(segment, isHeading = true)
+                    is NoteItem.Paragraph -> NoteText(segment)
+                    is NoteItem.Bullet -> {
+                        // A segment is a sub-bullet if its originalText is one of the sub-bullets of the NoteItem
+                        if (item.subBullets.contains(segment.originalText)) {
+                             SubBullet(segment)
+                        } else {
+                             Bullet(segment)
+                        }
+                    }
+                    is NoteItem.Image -> NoteImage(resId = item.resId, onImageClick = { onImageClick(item.resId) })
                 }
             }
         }
@@ -1354,17 +1335,16 @@ fun NotePage(screenHeight: Dp, background: Int, content: @Composable () -> Unit)
 }
 
 @Composable
-fun NoteText(text: String, isHeading: Boolean = false) {
+fun NoteText(segment: TextSegment, isHeading: Boolean = false) {
     val baseSize = LocalBaseFontSize.current
     val highlightRange = LocalHighlightRange.current
-    val fullText = LocalFullText.current
-    val rotation = textRotations[text.hashCode().absoluteValue % textRotations.size]
+    val rotation = textRotations[segment.originalText.hashCode().absoluteValue % textRotations.size]
 
     // Ink color variation for authenticity
     val textColor = if (isHeading) {
         headingColor
     } else {
-        when (text.hashCode() % 3) {
+        when (segment.originalText.hashCode() % 3) {
             0 -> bodyColorVariant1
             1 -> bodyColorVariant2
             else -> bodyColor
@@ -1372,27 +1352,26 @@ fun NoteText(text: String, isHeading: Boolean = false) {
     }
 
     // Check if this text contains highlighted portion
-    val startInFull = fullText.indexOf(text)
-    val shouldHighlight = highlightRange != null && startInFull >= 0 &&
-                         highlightRange.first >= startInFull &&
-                         highlightRange.first < startInFull + text.length
+    val shouldHighlight = highlightRange != null &&
+            highlightRange.first >= segment.startPos &&
+            highlightRange.first < segment.endPos
 
-    if (shouldHighlight && highlightRange != null) {
+    if (shouldHighlight) {
         // Calculate local highlight position
-        val localStart = (highlightRange.first - startInFull).coerceAtLeast(0)
-        val localEnd = (highlightRange.second - startInFull).coerceAtMost(text.length)
+        val localStart = (highlightRange.first - segment.startPos).coerceAtLeast(0)
+        val localEnd = (highlightRange.second - segment.startPos).coerceAtMost(segment.cleanedText.length)
 
-        if (localStart >= 0 && localStart < localEnd && localEnd <= text.length) {
+        if (localStart >= 0 && localStart < localEnd && localEnd <= segment.cleanedText.length) {
             // Use AnnotatedString for highlighting
             val annotatedText = buildAnnotatedString {
                 if (localStart > 0) {
-                    append(text.substring(0, localStart))
+                    append(segment.cleanedText.substring(0, localStart))
                 }
-                withStyle(SpanStyle(background = Color(0xFFFFEB3B), color = Color(0xFF2D3436))) {
-                    append(text.substring(localStart, localEnd))
+                withStyle(SpanStyle(background = Color(0xFFFF9800), color = Color.Black)) {
+                    append(segment.cleanedText.substring(localStart, localEnd))
                 }
-                if (localEnd < text.length) {
-                    append(text.substring(localEnd))
+                if (localEnd < segment.cleanedText.length) {
+                    append(segment.cleanedText.substring(localEnd))
                 }
             }
 
@@ -1421,7 +1400,7 @@ fun NoteText(text: String, isHeading: Boolean = false) {
 
     // Normal text without highlighting
     Text(
-        text = text,
+        text = segment.cleanedText,
         style = TextStyle(
             fontFamily = kalamFont,
             fontSize = if (isHeading) (baseSize + 2).sp else baseSize.sp,
@@ -1481,4 +1460,3 @@ fun NoteTitleText(text: String) {
         )
     }
 }
-

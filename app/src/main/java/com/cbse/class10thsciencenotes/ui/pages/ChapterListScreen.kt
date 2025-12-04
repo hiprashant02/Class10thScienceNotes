@@ -175,9 +175,15 @@ import com.cbse.class10thsciencenotes.ui.theme.withIconAlpha
 
 // 1. Data model for the Chapter list
 
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.IconButton
+import androidx.navigation.NavController
+
+// ...existing imports...
+
 // 3. The main screen composable (Using Theme System)
 @Composable
-fun ChapterListScreen(onClick: (Chapter) -> Unit) {
+fun ChapterListScreen(navController: NavController, onClick: (Chapter) -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -186,8 +192,8 @@ fun ChapterListScreen(onClick: (Chapter) -> Unit) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            // Beautiful Header
-            ChapterListHeader()
+            // Beautiful Header with Back Button
+            ChapterListHeader(onBackClick = { navController.popBackStack() })
 
             // Chapter List
             LazyColumn(
@@ -210,9 +216,9 @@ fun ChapterListScreen(onClick: (Chapter) -> Unit) {
     }
 }
 
-// 4. Beautiful Header (Using Theme System)
+// 4. Beautiful Header with Back Button (Using Theme System)
 @Composable
-fun ChapterListHeader() {
+fun ChapterListHeader(onBackClick: () -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -237,29 +243,50 @@ fun ChapterListHeader() {
                 .background(AppTheme.decorativeColor)
         )
 
-        Column(
+        Row(
             modifier = Modifier
+                .fillMaxWidth()
                 .align(Alignment.CenterStart)
-                .padding(AppDimensions.SpacingLarge.dp)
+                .padding(AppDimensions.SpacingLarge.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "CLASS 10TH SCIENCE",
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
-                letterSpacing = 2.sp
-            )
-            Spacer(modifier = Modifier.height(AppDimensions.SpacingSmall.dp))
-            Text(
-                text = "All Chapters",
-                style = MaterialTheme.typography.displayMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onPrimary
-            )
-            Text(
-                text = "Select a chapter to begin",
-                style = MaterialTheme.typography.headlineSmall,
-                color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
-            )
+            // Back Button
+            IconButton(
+                onClick = onBackClick,
+                modifier = Modifier
+                    .size(40.dp)
+                    .background(Color.White.copy(alpha = 0.2f), CircleShape)
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Back",
+                    tint = Color.White,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            Column {
+                Text(
+                    text = "CLASS 10TH SCIENCE",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
+                    letterSpacing = 2.sp
+                )
+                Spacer(modifier = Modifier.height(AppDimensions.SpacingSmall.dp))
+                Text(
+                    text = "All Chapters",
+                    style = MaterialTheme.typography.displayMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onPrimary
+                )
+                Text(
+                    text = "Select a chapter to begin",
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.9f)
+                )
+            }
         }
     }
 }
